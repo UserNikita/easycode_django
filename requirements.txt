@@ -3,5 +3,6 @@ django-filter==2.0.0
 olefile==0.45.1
 Pillow==5.2.0
 pytz==2018.5
+gunicorn==19.9.0
 
 git+https://github.com/summernote/django-summernote.git
