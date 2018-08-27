@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load library_template_tags %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'library:book_list' %}">Все книги</a></li>
+    <li><a href="{{ book.category.get_absolute_url }}">{{ book.category }}</a></li>
+    <li><span>{{ book.title }}</span></li>
+{% endblock %}
+
+{% block content %}
+    <div uk-grid>
+        <div class="uk-width-expand@m">
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <h3 class="uk-card-title uk-margin-remove-bottom">{{ book.title }}</h3>
+                            <p class="uk-text-meta uk-margin-remove-top">
+                                <time datetime="2016-04-01T19:00">{{ book.create_date }}</time>
+                            </p>
+                        </div>
+                        <div class="uk-width-auto">
+                            <a uk-icon="more-vertical"></a>
+                            <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
+                                <ul class="uk-nav uk-dropdown-nav uk-iconnav uk-iconnav-vertical">
+                                    <li>
+                                        <a href="{% url 'library:book_edit' book.id %}">
+                                            <span uk-icon="file-edit" class="uk-margin-small-right"></span>
+                                            Редактировать
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'library:book_delete' book.id %}">
+                                            <span uk-icon="trash" class="uk-margin-small-right"></span>
+                                            Удалить
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <div uk-grid>
+                        <div class="uk-width-1-4@m">
+                            <img src="{{ book.get_cover_url }}">
+                        </div>
+                        <div class="uk-width-expand@m">
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand" uk-leader>
+                                    <b>Авторы</b>
+                                </div>
+                                <div>
+                                    {{ book.authors.all|join:', ' }}
+                                </div>
+                            </div>
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand" uk-leader>
+                                    <b>Издательства</b>
+                                </div>
+                                <div>
+                                    {{ book.publishers.all|join:', ' }}
+                                </div>
+                            </div>
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand" uk-leader>
+                                    <b>Год издания</b>
+                                </div>
+                                <div>
+                                    {{ book.year }}
+                                </div>
+                            </div>
+                            <div class="uk-grid-small" uk-grid>
+                                <div class="uk-width-expand" uk-leader>
+                                    <b>Количество страниц</b>
+                                </div>
+                                <div>
+                                    {{ book.page_count }}
+                                </div>
+                            </div>
+                            <p>
+                                {{ book.description|safe }}
+                            </p>
+                            <b>Ссылки для скачивания</b>
+                            <ul>
+                                {% for file in book.bookfile_set.all %}
+                                    <li>
+                                        <a href="{{ file.url }}" target="_blank">
+                                            {{ file.url }}
+                                            <span uk-icon="link"></span>
+                                        </a>
+                                        {{ file.size }} mb ({{ file.get_format_display }})
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-3@m">
+            {% include_library_category_sidebar %}
+        </div>
+    </div>
+{% endblock %}

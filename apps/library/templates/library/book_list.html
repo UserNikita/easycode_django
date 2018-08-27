@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load library_template_tags %}
+
+{% block breadcrumb %}
+    <li><span>Все книги</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-child-width-expand" uk-grid>
+        <div>
+            <div class="uk-grid-small" uk-grid uk-height-match="target: > div > .uk-card > .uk-card-body">
+                {% for book in book_list %}
+                    <div class="uk-width-1-4@l">
+                        <div class="uk-card uk-card-default uk-card-small">
+                            <div class="uk-card-media-top">
+                                <img src="{{ book.get_cover_url }}" width="100%" alt="">
+                            </div>
+                            <div class="uk-card-body">
+                                <div uk-grid>
+                                    <div class="uk-width-expand">
+                                        <span class="">{{ book.title }}</span>
+                                    </div>
+                                    <div class="uk-width-auto">
+                                        <a uk-icon="more-vertical"></a>
+                                        <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li>
+                                                    <a href="{{ book.get_absolute_url }}">
+                                                        <span uk-icon="file" class="uk-margin-small-right"></span>
+                                                        Просмотреть
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{% url 'library:book_edit' book.id %}">
+                                                        <span uk-icon="file-edit" class="uk-margin-small-right"></span>
+                                                        Редактировать
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{% url 'library:book_delete' book.id %}">
+                                                        <span uk-icon="trash" class="uk-margin-small-right"></span>
+                                                        Удалить
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-card-footer">
+                                <div uk-grid>
+                                    <div class="uk-width-expand uk-flex uk-flex-right">
+                                        <a href="{{ book.get_absolute_url }}" class="uk-button uk-button-link">
+                                            Read more
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="uk-text-center uk-card uk-card-default uk-card-body uk-width-expand">
+                        Пусто
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="uk-width-1-3@m">
+            <div grid>
+                {% include_library_category_sidebar %}
+                {% include 'library/filter_form.html' with form=filter.form %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block pagination %}
+    <ul class="uk-pagination uk-flex-center" uk-margin>
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="{% url 'library:book_list' page_obj.previous_page_number %}?{{ request.GET.urlencode }}">
+                    <span uk-pagination-previous></span>
+                </a>
+            </li>
+        {% else %}
+            <li class="uk-disabled">
+                <a href="#">
+                    <span uk-pagination-previous></span>
+                </a>
+            </li>
+        {% endif %}
+        {% for page_num in paginator.page_range %}
+            {% if page_num == page_obj.number %}
+                <li class="uk-active">
+                    <span>{{ page_num }}</span>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'library:book_list' page_num %}?{{ request.GET.urlencode }}">{{ page_num }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <li>
+                <a href="{% url 'library:book_list' page_obj.next_page_number %}?{{ request.GET.urlencode }}">
+                    <span uk-pagination-next></span>
+                </a>
+            </li>
+        {% else %}
+            <li class="uk-disabled">
+                <a href="#">
+                    <span uk-pagination-next></span>
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock %}

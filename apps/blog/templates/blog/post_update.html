@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'blog:post_list' %}">Все посты</a></li>
+    <li><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></li>
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    <li><span>Редактирование</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        {% block card_title %}Редактирование{% endblock %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <form method="post" class="uk-form-horizontal">
+                {% csrf_token %}
+
+                {{ form.errors }}
+
+                <div class="uk-margin">
+                    <label for="{{ form.title.id_for_label }}" class="uk-form-label">
+                        {{ form.title.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.title }}
+                        {{ form.title.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.category.id_for_label }}" class="uk-form-label">
+                        {{ form.category.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.category }}
+                        {{ form.category.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.description.id_for_label }}" class="uk-form-label">
+                        {{ form.description.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.description }}
+                        {{ form.description.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.text.id_for_label }}" class="uk-form-label">
+                        {{ form.text.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.text }}
+                        {{ form.text.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.slug.id_for_label }}" class="uk-form-label">
+                        {{ form.slug.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.slug }}
+                        {{ form.slug.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.tags.id_for_label }}" class="uk-form-label">
+                        {{ form.tags.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.tags }}
+                        {{ form.tags.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <label for="{{ form.draft.id_for_label }}" class="uk-form-label">
+                        {{ form.draft.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.draft }}
+                        {{ form.draft.errors }}
+                    </div>
+                </div>
+
+                <div class="uk-margin">
+                    <button type="submit" class="uk-button uk-button-primary">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

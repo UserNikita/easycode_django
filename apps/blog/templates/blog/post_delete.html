@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'blog:post_list' %}">Все посты</a></li>
+    <li><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></li>
+    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    <li><span>Удаление</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default uk-width-2-3@m">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">Удаление</h3>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <p>
+                Информация о посте
+            </p>
+            <table class="uk-table uk-table-divider">
+                <tbody>
+                <tr>
+                    <th>Заголовок</th>
+                    <td>{{ post.title }}</td>
+                </tr>
+                <tr>
+                    <th>Дата создания</th>
+                    <td>{{ post.create_date }}</td>
+                </tr>
+                <tr>
+                    <th>Дата последнего изменения</th>
+                    <td>{{ post.change_date }}</td>
+                </tr>
+                <tr>
+                    <th>Количество комментариев</th>
+                    <td>{{ post.comments.count }}</td>
+                </tr>
+                <tr>
+                    <th>Количество лайков</th>
+                    <td>{{ post.likes.count }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="uk-card-footer">
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="uk-button uk-button-danger">
+                    Удалить
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

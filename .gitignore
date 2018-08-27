@@ -1,0 +1,6 @@
+.idea/
+db/db.sqlite3
+venv/
+*.py[cod]
+media
+static

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load library_template_tags %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'library:book_list' %}">Все книги</a></li>
+    <li><a href="{{ book.category.get_absolute_url }}">{{ book.category }}</a></li>
+    <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+    <li><span>Редактирование</span></li>
+{% endblock %}
+
+
+{% block content %}
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        {% block card_title %}Редактирование{% endblock %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <form class="uk-form-horizontal" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.errors }}
+                <div class="uk-margin">
+                    <label for="{{ form.cover.id_for_label }}" class="uk-form-label">
+                        {{ form.cover.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.cover }}
+                        {{ form.cover.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.title.id_for_label }}" class="uk-form-label">
+                        {{ form.title.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.title }}
+                        {{ form.title.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.description.id_for_label }}" class="uk-form-label">
+                        {{ form.description.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.description }}
+                        {{ form.description.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.authors.id_for_label }}" class="uk-form-label">
+                        {{ form.authors.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.authors }}
+                        {{ form.authors.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.publishers.id_for_label }}" class="uk-form-label">
+                        {{ form.publishers.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.publishers }}
+                        {{ form.publishers.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.year.id_for_label }}" class="uk-form-label">
+                        {{ form.year.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.year }}
+                        {{ form.year.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.category.id_for_label }}" class="uk-form-label">
+                        {{ form.category.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.category }}
+                        {{ form.category.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.tags.id_for_label }}" class="uk-form-label">
+                        {{ form.tags.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.tags }}
+                        {{ form.tags.errors }}
+                    </div>
+                </div>
+                <div class="uk-margin">
+                    <label for="{{ form.page_count.id_for_label }}" class="uk-form-label">
+                        {{ form.page_count.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.page_count }}
+                        {{ form.page_count.errors }}
+                    </div>
+                </div>
+                {{ book_file_formset }}
+                <div class="uk-margin">
+                    <button type="submit" class="uk-button uk-button-primary">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
