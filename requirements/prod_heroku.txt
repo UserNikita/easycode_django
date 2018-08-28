@@ -1,0 +1,5 @@
+-r common.txt
+
+psycopg2==2.7.5
+gunicorn==19.9.0
+whitenoise==4.0

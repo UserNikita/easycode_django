@@ -3,10 +3,10 @@ python:
   - "3.5"
 # Установка зависимостей
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements/common.txt
 # Команда для запуска тестов
 script:
-  - python manage.py test --settings=settings.test
+  - python manage.py test --settings=settings.env.test
 # Деплой на Heroku
 deploy:
   provider: heroku
