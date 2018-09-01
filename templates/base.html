@@ -20,26 +20,26 @@
             {% if user.is_anonymous %}
                 <li>
                     <a href="{% url 'personal_area:login' %}">
-                        <span class="uk-margin-small-right" uk-icon="file"></span>
+                        <span class="uk-margin-small-right" uk-icon="sign-in"></span>
                         Вход
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'personal_area:registration' %}">
-                        <span class="uk-margin-small-right" uk-icon="file"></span>
+                        <span class="uk-margin-small-right" uk-icon="sign-in"></span>
                         Регистрация
                     </a>
                 </li>
             {% else %}
                 <li>
                     <a href="{% url 'personal_area:profile_detail' %}">
-                        <span class="uk-margin-small-right" uk-icon="file"></span>
+                        <span class="uk-margin-small-right" uk-icon="user"></span>
                         Профиль
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'personal_area:logout' %}">
-                        <span class="uk-margin-small-right" uk-icon="file"></span>
+                        <span class="uk-margin-small-right" uk-icon="sign-out"></span>
                         Выход
                     </a>
                 </li>
@@ -47,13 +47,13 @@
             <li class="uk-nav-divider"></li>
             <li>
                 <a href="{% url 'blog:post_list' %}">
-                    <span class="uk-margin-small-right" uk-icon="file"></span>
+                    <span class="uk-margin-small-right" uk-icon="folder"></span>
                     Блог
                 </a>
             </li>
             <li>
                 <a href="{% url 'library:book_list' %}">
-                    <span class="uk-margin-small-right" uk-icon="file"></span>
+                    <span class="uk-margin-small-right" uk-icon="folder"></span>
                     Книги
                 </a>
             </li>
