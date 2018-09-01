@@ -12,6 +12,10 @@ class BookListView(FilterMixin, ListView):
     paginate_by = 24
     filterset_class = BookFilterSet
 
+    def get_queryset(self):
+        qs = super(BookListView, self).get_queryset().filter(draft=False)
+        return qs
+
     def get_context_data(self, **kwargs):
         filterset = self.get_filterset(self.get_filterset_class())
         kwargs['filter'] = filterset

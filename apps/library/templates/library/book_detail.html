@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load library_template_tags %}
 
 {% block breadcrumb %}
@@ -96,7 +97,43 @@
                         </div>
                     </div>
                 </div>
+                <div class="uk-card-footer">
+                    <ul>
+                        {% for like in book.likes.all %}
+                            <img class="small-avatar" src="{{ like.user.profile.get_photo_url }}">
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
+
+            <ul class="uk-comment-list uk-width-2-3@m uk-padding-small">
+                {% for comment in book.comments.all %}
+                    <li id="comment-{{ comment.id }}">
+                        <div class="uk-comment uk-visible-toggle">
+                            <header class="uk-comment-header">
+                                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                                    <div class="uk-width-auto">
+                                        <img class="uk-comment-avatar uk-border-circle"
+                                             src="{% static 'img/default_avatar.jpg' %}"
+                                             width="80" height="80" alt="">
+                                    </div>
+                                    <div class="uk-width-expand">
+                                        <h4 class="uk-comment-title uk-margin-remove">
+                                            <a class="uk-link-reset" href="#">{{ comment.author }}</a>
+                                        </h4>
+                                        <p class="uk-comment-meta uk-margin-remove-top">
+                                            <a class="uk-link-reset" href="#">{{ comment.creation_date }}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </header>
+                            <div class="uk-comment-body">
+                                {{ comment.text }}
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
         </div>
         <div class="uk-width-1-3@m">
             {% include_library_category_sidebar %}

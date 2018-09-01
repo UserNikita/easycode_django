@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.templatetags.static import static
 from django.utils.safestring import mark_safe
@@ -10,16 +11,22 @@ FILE_FORMATS = (
 
 
 class Book(models.Model):
-    title = models.CharField(verbose_name='Название', max_length=500)
-    description = models.TextField(verbose_name='Описание', blank=True)
-    cover = models.ImageField(verbose_name='Обложка', blank=True)
-    authors = models.ManyToManyField(verbose_name='Авторы', to='Author')
-    publishers = models.ManyToManyField(verbose_name='Издательства', to='Publisher')
-    year = models.PositiveIntegerField(verbose_name='Год издания')
-    category = models.ForeignKey(verbose_name='Категория', to='Category', blank=True, null=True,
+    title = models.CharField(verbose_name="Название", max_length=500)
+    description = models.TextField(verbose_name="Описание", blank=True)
+    cover = models.ImageField(verbose_name="Обложка", blank=True)
+    authors = models.ManyToManyField(verbose_name="Авторы", to='Author')
+    publishers = models.ManyToManyField(verbose_name="Издательства", to='Publisher')
+    year = models.PositiveIntegerField(verbose_name="Год издания")
+    category = models.ForeignKey(verbose_name="Категория", to='Category', blank=True, null=True,
                                  on_delete=models.SET_NULL)
-    tags = models.ManyToManyField(verbose_name='Теги', to='Tag', blank=True)
-    page_count = models.PositiveSmallIntegerField(verbose_name='Количество страниц', default=0)
+    tags = models.ManyToManyField(verbose_name="Теги", to='Tag', blank=True)
+    page_count = models.PositiveSmallIntegerField(verbose_name="Количество страниц", default=0)
+    draft = models.BooleanField(verbose_name="Черновик", default=False)
+    created_date = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
+    changed_date = models.DateTimeField(verbose_name="Дата последнего изменения", auto_now=True)
+
+    likes = GenericRelation(to='personal_area.Like', related_query_name='books')
+    comments = GenericRelation(to='personal_area.Comment', related_query_name='books')
 
     def get_absolute_url(self):
         return reverse('library:book_detail', args=(self.id,))
@@ -40,8 +47,8 @@ class Book(models.Model):
 
     class Meta:
         ordering = ('-id',)
-        verbose_name = 'Книга'
-        verbose_name_plural = 'Книги'
+        verbose_name = "Книга"
+        verbose_name_plural = "Книги"
 
 
 class BookFile(models.Model):
