@@ -1,5 +1,4 @@
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin, ProcessFormView
 from django.contrib.auth.mixins import UserPassesTestMixin, PermissionRequiredMixin

@@ -134,6 +134,18 @@
                     </li>
                 {% endfor %}
             </ul>
+
+            {% if not request.user.is_anonymous %}
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="uk-margin">
+                        {{ form.text }}
+                    </div>
+                    <button type="submit" class="uk-button uk-button-primary">
+                        Отправить
+                    </button>
+                </form>
+            {% endif %}
         </div>
         <div class="uk-width-1-3@m">
             {% include_library_category_sidebar %}

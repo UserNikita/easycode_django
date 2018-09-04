@@ -1,6 +1,9 @@
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views.generic.edit import FormMixin, ProcessFormView
+from django.contrib.auth.mixins import UserPassesTestMixin, PermissionRequiredMixin
 from django_filters.views import FilterMixin
+
+from apps.personal_area.forms import CommentForm
 from .filtersets import BookFilterSet
 from .models import *
 from .forms import *
@@ -43,9 +46,27 @@ class CategoryBookListView(BookListView):
         return context
 
 
-class BookDetailView(DetailView):
+class BookDetailView(DetailView, UserPassesTestMixin, ProcessFormView, FormMixin):
     template_name = 'library/book_detail.html'
     model = Book
+    form_class = CommentForm
+
+    def test_func(self):
+        is_draft = self.get_object().draft
+        is_superuser = self.request.user.is_superuser
+        condition = not is_draft or (is_draft and is_superuser)
+        return condition
+
+    def get_success_url(self):
+        return self.get_object().get_absolute_url()
+
+    def form_valid(self, form):
+        obj = self.get_object()
+        comment = form.save(commit=False)
+        comment.content_object = obj
+        comment.author = self.request.user
+        comment.save()
+        return super(BookDetailView, self).form_valid(form)
 
 
 class BookUpdateView(PermissionRequiredMixin, UpdateView):
