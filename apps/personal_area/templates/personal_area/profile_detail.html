@@ -19,7 +19,7 @@
                     <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
                         <ul class="uk-nav uk-dropdown-nav uk-iconnav uk-iconnav-vertical">
                             <li>
-                                <a href="#">
+                                <a href="{% url 'personal_area:profile_update' %}">
                                     <span uk-icon="file-edit" class="uk-margin-small-right"></span>
                                     Редактировать
                                 </a>
@@ -44,9 +44,6 @@
                         {% else %}
                             <img src="{% static 'img/default_avatar.jpg' %}">
                         {% endif %}
-                        <p class="uk-margin-small-top">
-                            <a href="#" class="uk-button uk-button-link">Изменить</a>
-                        </p>
                     </div>
                 </div>
                 <div class="uk-width-expand@m">

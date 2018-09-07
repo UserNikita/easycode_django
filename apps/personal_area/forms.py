@@ -18,9 +18,13 @@ class RegistrationForm(UserCreationForm):
 
 
 class ProfileForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'uk-input uk-form-width-large'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'uk-input uk-form-width-large'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'uk-input uk-form-width-large'}))
+
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ('photo',)
 
 
 class CommentForm(forms.ModelForm):
