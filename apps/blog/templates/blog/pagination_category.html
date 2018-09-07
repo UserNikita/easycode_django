@@ -1,7 +1,7 @@
 <ul class="uk-pagination uk-flex-center" uk-margin>
     {% if page_obj.has_previous %}
         <li>
-            <a href="{% url 'library:book_list' page_obj.previous_page_number %}?{{ request.GET.urlencode }}">
+            <a href="{% url 'blog:category_post_list' category.id page_obj.previous_page_number %}?{{ request.GET.urlencode }}">
                 <span uk-pagination-previous></span>
             </a>
         </li>
@@ -19,13 +19,13 @@
             </li>
         {% else %}
             <li>
-                <a href="{% url 'library:book_list' page_num %}?{{ request.GET.urlencode }}">{{ page_num }}</a>
+                <a href="{% url 'blog:category_post_list' category.id page_num %}?{{ request.GET.urlencode }}">{{ page_num }}</a>
             </li>
         {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
         <li>
-            <a href="{% url 'library:book_list' page_obj.next_page_number %}?{{ request.GET.urlencode }}">
+            <a href="{% url 'blog:category_post_list' category.id page_obj.next_page_number %}?{{ request.GET.urlencode }}">
                 <span uk-pagination-next></span>
             </a>
         </li>

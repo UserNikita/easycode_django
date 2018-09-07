@@ -20,7 +20,7 @@ class PostListView(ListView):
 
 
 class CategoryPostListView(PostListView):
-    template_name = 'blog/category_post_list.html'
+    template_name = 'blog/post_list_category.html'
     category = None
 
     def get_queryset(self):

@@ -27,7 +27,7 @@ class BookListView(FilterMixin, ListView):
 
 
 class CategoryBookListView(BookListView):
-    template_name = 'library/category_book_list.html'
+    template_name = 'library/book_list_category.html'
     category = None
 
     def get_queryset(self):
