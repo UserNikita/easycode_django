@@ -82,18 +82,20 @@
                             <p>
                                 {{ book.description|safe }}
                             </p>
-                            <b>Ссылки для скачивания</b>
-                            <ul>
-                                {% for file in book.bookfile_set.all %}
-                                    <li>
-                                        <a href="{{ file.url }}" target="_blank">
-                                            {{ file.url }}
-                                            <span uk-icon="link"></span>
-                                        </a>
-                                        {{ file.size }} mb ({{ file.get_format_display }})
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                            {% if not user.anonymous %}
+                                <b>Ссылки для скачивания</b>
+                                <ul>
+                                    {% for file in book.bookfile_set.all %}
+                                        <li>
+                                            <a href="{{ file.url }}" target="_blank" class="book-file-link">
+                                                {{ file.url }}
+                                                <span uk-icon="link"></span>
+                                            </a>
+                                            {{ file.size }} mb ({{ file.get_format_display }})
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

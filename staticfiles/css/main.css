@@ -7,3 +7,7 @@ body {
     height: 40px;
     border-radius: 50%;
 }
+
+.book-file-link {
+    word-break: break-all;
+}
