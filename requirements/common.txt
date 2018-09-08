@@ -1,7 +1,8 @@
-Django==2.0.7
+Django==2.1.1
 django-filter==2.0.0
 olefile==0.45.1
 Pillow==5.2.0
 pytz==2018.5
+djangorestframework==3.8.2
 
 git+https://github.com/summernote/django-summernote.git
