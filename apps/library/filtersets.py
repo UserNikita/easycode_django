@@ -1,7 +1,7 @@
 import django_filters
 from django_filters import widgets
 from django import forms
-from .models import Book, Tag
+from .models import Book, Tag, Publisher, Author
 
 
 class BookFilterSet(django_filters.FilterSet):
@@ -11,7 +11,11 @@ class BookFilterSet(django_filters.FilterSet):
     page_count = django_filters.RangeFilter(widget=widgets.RangeWidget(attrs={'class': 'uk-input'}))
     tags = django_filters.ModelMultipleChoiceFilter(queryset=Tag.objects.all(),
                                                     widget=forms.SelectMultiple(attrs={'class': 'uk-select'}))
+    publishers = django_filters.ModelMultipleChoiceFilter(queryset=Publisher.objects.all(),
+                                                          widget=forms.SelectMultiple(attrs={'class': 'uk-select'}))
+    authors = django_filters.ModelMultipleChoiceFilter(queryset=Author.objects.all(),
+                                                       widget=forms.SelectMultiple(attrs={'class': 'uk-select'}))
 
     class Meta:
         model = Book
-        fields = ('title', 'description', 'year', 'page_count', 'tags',)
+        fields = ('title', 'publishers', 'authors', 'description', 'year', 'page_count', 'tags',)

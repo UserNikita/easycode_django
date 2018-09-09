@@ -19,6 +19,24 @@
                 </div>
             </div>
             <div class="uk-margin">
+                <label for="{{ form.publishers.id_for_label }}" class="uk-form-label">
+                    {{ form.publishers.label }}
+                </label>
+                <div class="uk-form-controls">
+                    {{ form.publishers }}
+                    {{ form.publishers.errors }}
+                </div>
+            </div>
+            <div class="uk-margin">
+                <label for="{{ form.authors.id_for_label }}" class="uk-form-label">
+                    {{ form.authors.label }}
+                </label>
+                <div class="uk-form-controls">
+                    {{ form.authors }}
+                    {{ form.authors.errors }}
+                </div>
+            </div>
+            <div class="uk-margin">
                 <label for="{{ form.description.id_for_label }}" class="uk-form-label">
                     {{ form.description.label }}
                 </label>
