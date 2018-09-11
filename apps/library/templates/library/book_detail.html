@@ -44,7 +44,11 @@
                 <div class="uk-card-body">
                     <div uk-grid>
                         <div class="uk-width-1-4@m">
-                            <img src="{{ book.get_cover_url }}">
+                            <div uk-lightbox>
+                                <a href="{{ book.get_cover_url }}" data-caption="{{ book.title }}">
+                                    <img src="{{ book.get_cover_url }}">
+                                </a>
+                            </div>
                         </div>
                         <div class="uk-width-expand@m">
                             <div class="uk-grid-small" uk-grid>

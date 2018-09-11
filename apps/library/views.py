@@ -12,7 +12,7 @@ from .forms import *
 class BookListView(FilterMixin, ListView):
     template_name = 'library/book_list.html'
     model = Book
-    paginate_by = 24
+    paginate_by = 16
     filterset_class = BookFilterSet
 
     def get_queryset(self):
