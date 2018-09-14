@@ -39,3 +39,16 @@
    ```bash
    coverage html
    ```
+
+
+### Снятие дампа в фикстуры
+
+1. Активировать виртуальное окружение
+    ```bash
+    source env/bin/activate
+    ```
+
+2. Выполнить команду
+    ```bash
+    python manage.py dumpdata library --indent=2 --output=./apps/library/fixtures/library_data.json --settings=settings.env.prod_pythonanywhere
+    ```
