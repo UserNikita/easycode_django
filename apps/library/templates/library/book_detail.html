@@ -86,7 +86,7 @@
                             <p>
                                 {{ book.description|safe }}
                             </p>
-                            {% if not user.anonymous %}
+                            {% if not request.user.is_anonymous %}
                                 <b>Ссылки для скачивания</b>
                                 <ul>
                                     {% for file in book.bookfile_set.all %}
@@ -99,6 +99,13 @@
                                         </li>
                                     {% endfor %}
                                 </ul>
+                            {% else %}
+                                <b>
+                                    Для скачивания файла необходимо
+                                    <a href="{% url 'personal_area:login' %}?next={% url 'library:book_detail' book.id %}">авторизоваться</a>
+                                    или
+                                    <a href="{% url 'personal_area:registration' %}">зарегистрироваться</a>
+                                </b>
                             {% endif %}
                         </div>
                     </div>
