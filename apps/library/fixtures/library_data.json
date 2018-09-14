@@ -1,5 +1,803 @@
 [
 {
+  "model": "library.author",
+  "pk": 1,
+  "fields": {
+    "full_name": "\u041a\u0440\u0443\u043f\u043d\u043e\u0432 \u0412 \u041d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 2,
+  "fields": {
+    "full_name": "Marijn Haverbeke"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 3,
+  "fields": {
+    "full_name": "\u0421\u0442\u043e\u044f\u043d \u0421\u0442\u0435\u0444\u0430\u043d\u043e\u0432"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 4,
+  "fields": {
+    "full_name": "\u0414\u0443\u0433\u043b\u0430\u0441 \u041a\u0440\u043e\u043a\u0444\u043e\u0440\u0434"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 5,
+  "fields": {
+    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0424\u043b\u044d\u043d\u0430\u0433\u0430\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 6,
+  "fields": {
+    "full_name": "\u0414\u0436\u043e\u043d \u0420\u0435\u0437\u0438\u0433"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 7,
+  "fields": {
+    "full_name": "\u0420\u0430\u0441\u0441 \u0424\u0435\u0440\u0433\u044e\u0441\u043e\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 8,
+  "fields": {
+    "full_name": "\u0414\u0436\u043e\u043d \u041f\u0430\u043a\u0441\u0442\u043e\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 9,
+  "fields": {
+    "full_name": "\u0418\u043b\u044c\u044f \u041a\u0430\u043d\u0442\u043e\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 10,
+  "fields": {
+    "full_name": "\u041c\u0430\u043a\u0441 \u0428\u043b\u0435\u0435"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 11,
+  "fields": {
+    "full_name": "\u041c\u0430\u0439\u043a\u043b \u0414\u043e\u0443\u0441\u043e\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 12,
+  "fields": {
+    "full_name": "\u0420\u043e\u0431\u0435\u0440\u0442 \u041c\u0430\u0440\u0442\u0438\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 13,
+  "fields": {
+    "full_name": "\u0427\u0435\u0434 \u0424\u0430\u0443\u043b\u0435\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 14,
+  "fields": {
+    "full_name": "\u0421\u0442\u0438\u0432 \u041c\u0430\u043a\u043a\u043e\u043d\u043d\u0435\u043b\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 15,
+  "fields": {
+    "full_name": "\u041c\u0430\u0442\u0432\u0435\u0435\u0432 \u0421\u0435\u0440\u0433\u0435\u0439 \u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440\u043e\u0432\u0438\u0447"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 16,
+  "fields": {
+    "full_name": "\u041c. \u041f\u0430\u0446\u0438\u0430\u043d\u0441\u043a\u0438\u0439"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 17,
+  "fields": {
+    "full_name": "\u041f\u0430\u0431\u043b\u043e \u0414\u0438\u043b\u0435\u043c\u0430\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 18,
+  "fields": {
+    "full_name": "\u041d\u0438\u043a\u043e\u043b\u0430\u0439 \u041f\u0440\u043e\u0445\u043e\u0440\u0451\u043d\u043e\u043a"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 19,
+  "fields": {
+    "full_name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u0414\u0440\u043e\u043d\u043e\u0432"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 20,
+  "fields": {
+    "full_name": "\u041b\u0443\u0438\u0441 \u041f\u0435\u0434\u0440\u043e \u041a\u043e\u044d\u043b\u044c\u043e"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 21,
+  "fields": {
+    "full_name": "\u0412\u0438\u043b\u043b\u0438 \u0420\u0438\u0447\u0430\u0440\u0442"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 22,
+  "fields": {
+    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0411\u0438\u0437\u043b\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 23,
+  "fields": {
+    "full_name": "\u042d\u043b \u0421\u0432\u0435\u0439\u0433\u0430\u0440\u0442"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 24,
+  "fields": {
+    "full_name": "\u0421\u0430\u0439\u043c\u043e\u043d \u0425\u043e\u043b\u043c\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 25,
+  "fields": {
+    "full_name": "\u042f\u043a\u043e\u0432 \u0424\u0430\u0439\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 26,
+  "fields": {
+    "full_name": "\u0410\u043d\u0442\u043e\u043d \u041c\u043e\u0438\u0441\u0435\u0435\u0432"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 27,
+  "fields": {
+    "full_name": "\u0410\u0434\u0430\u043c \u0424\u0440\u0438\u043c\u0435\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 28,
+  "fields": {
+    "full_name": "\u0414\u044d\u043d \u0411\u0435\u0439\u0434\u0435\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 29,
+  "fields": {
+    "full_name": "\u0411\u0440\u0430\u044f\u043d \u0425\u0430\u0440\u0434\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 30,
+  "fields": {
+    "full_name": "\u0411\u0438\u043b\u043b \u0424\u0438\u043b\u0438\u043f\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 31,
+  "fields": {
+    "full_name": "\u041a\u0440\u0438\u0441 \u0421\u0442\u044e\u0430\u0440\u0442"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 32,
+  "fields": {
+    "full_name": "\u041a\u0440\u0438\u0441\u0442\u0438\u043d \u041c\u0430\u0440\u0441\u0438\u043a\u0430\u043d\u043e"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 33,
+  "fields": {
+    "full_name": "\u041f\u043e\u043b \u0414\u0435\u0439\u0442\u0435\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 34,
+  "fields": {
+    "full_name": "\u0425\u0430\u0440\u0432\u0438 \u0414\u0435\u0439\u0442\u0435\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 35,
+  "fields": {
+    "full_name": "\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0435\u0440 \u0423\u043e\u043b\u0434"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 36,
+  "fields": {
+    "full_name": "\u041a\u043e\u0438\u0447\u0438 \u041c\u0430\u0446\u0443\u0434\u0430"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 37,
+  "fields": {
+    "full_name": "\u0420\u043e\u0434\u0436\u0435\u0440 \u041b\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 38,
+  "fields": {
+    "full_name": "\u042d\u0434\u0440\u0438\u0435\u043d \u041c\u043e\u0443\u044d\u0442"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 39,
+  "fields": {
+    "full_name": "\u041c\u0430\u0440\u0442\u0438\u043d \u041a\u043b\u0435\u043f\u043f\u043c\u0430\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 40,
+  "fields": {
+    "full_name": "\u0420\u0430\u0444\u0430\u044d\u043b\u043b\u043e \u0427\u0435\u043a\u043a\u043e"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 41,
+  "fields": {
+    "full_name": "\u0411\u0430\u0445\u0438\u0440\u0435\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u041c\u0438\u0445\u0430\u0439\u043b\u043e\u0432\u0438\u0447"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 42,
+  "fields": {
+    "full_name": "\u0410\u0434\u0438\u0442\u044c\u044f \u0411\u0445\u0430\u0440\u0433\u0430\u0432\u0430"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 43,
+  "fields": {
+    "full_name": "\u0414\u0436\u043e\u0440\u0434\u0436 \u0425\u0430\u0439\u043d\u0435\u043c\u0430\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 44,
+  "fields": {
+    "full_name": "\u0413\u044d\u0440\u0438 \u041f\u043e\u043b\u043b\u0438\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 45,
+  "fields": {
+    "full_name": "\u0421\u0442\u044d\u043d\u043b\u0438 \u0421\u0435\u043b\u043a\u043e\u0432"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 46,
+  "fields": {
+    "full_name": "\u0418\u0442\u0430\u043d \u0411\u0440\u0430\u0443\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 47,
+  "fields": {
+    "full_name": "\u0414\u0436\u043e\u0437\u0435\u0444 \u0425\u043e\u043a\u0438\u043d\u0433"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 48,
+  "fields": {
+    "full_name": "\u041d\u0438\u043b \u0424\u043e\u0440\u0434"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 49,
+  "fields": {
+    "full_name": "\u0422\u0435\u0440\u0435\u0437\u0430 \u041d\u0435\u0439\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 50,
+  "fields": {
+    "full_name": "Justin Seitz"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 51,
+  "fields": {
+    "full_name": "\u041f\u0438\u0442 \u0413\u0443\u0434\u043b\u0438\u0444"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 52,
+  "fields": {
+    "full_name": "\u0414\u0438\u043e\u043c\u0438\u0434\u0438\u0441 \u0421\u043f\u0438\u043d\u0435\u043b\u043b\u0438\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 53,
+  "fields": {
+    "full_name": "\u041a\u0435\u0432\u043b\u0438\u043d \u0425\u0435\u043d\u043d\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 54,
+  "fields": {
+    "full_name": "\u0422\u043e\u043c\u0430\u0441 \u041b\u0438\u043c\u043e\u043d\u0447\u0435\u043b\u043b\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 55,
+  "fields": {
+    "full_name": "\u041a\u0440\u0438\u0441\u0442\u0438\u043d\u0430 \u0425\u043e\u0433\u0430\u043d"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 56,
+  "fields": {
+    "full_name": "\u0421\u0442\u0440\u0430\u0442\u0430 \u0427\u0435\u0439\u043b\u0430\u043f"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 57,
+  "fields": {
+    "full_name": "\u0414\u0436\u0435\u0439\u043c\u0441 \u041a\u0443\u0440\u043e\u0443\u0437"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 58,
+  "fields": {
+    "full_name": "\u041a\u0438\u0442 \u0420\u043e\u0441\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 59,
+  "fields": {
+    "full_name": "\u042d\u043d\u0434\u0440\u044e \u0422\u0430\u043d\u0435\u043d\u0431\u0430\u0443\u043c"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 60,
+  "fields": {
+    "full_name": "\u0425\u0435\u0440\u0431\u0435\u0440\u0442 \u0411\u043e\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 61,
+  "fields": {
+    "full_name": "\u041f\u0438\u0442\u0435\u0440 \u042f\u0432\u043e\u0440\u0441\u043a\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 62,
+  "fields": {
+    "full_name": "\u041c\u0430\u0439\u043a\u043b \u041c\u0438\u043a\u043e\u0432\u0441\u043a\u0438"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 63,
+  "fields": {
+    "full_name": "\u0414\u0436\u043e\u0448 \u041f\u0430\u0443\u044d\u043b\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 64,
+  "fields": {
+    "full_name": "\u0420\u043e\u0434 \u0421\u0442\u0438\u0432\u0435\u043d\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 65,
+  "fields": {
+    "full_name": "\u0414\u043e\u043d\u043d \u0424\u0435\u043b\u043a\u0435\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 66,
+  "fields": {
+    "full_name": "\u0414\u0436\u0435\u0439\u0441\u043e\u043d \u0411\u0435\u0440\u0434\u0436"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 67,
+  "fields": {
+    "full_name": "\u0410\u0440\u043d\u043e\u043b\u044c\u0434 \u0420\u043e\u0431\u0431\u0438\u043d\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 68,
+  "fields": {
+    "full_name": "\u0421\u0438\u043b\u044c\u0432\u0435\u043d \u0420\u0435\u0442\u0430\u0431\u043e\u0443\u0438\u043b"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 69,
+  "fields": {
+    "full_name": "\u041c\u0430\u0440\u0438\u043e \u0426\u0435\u0445\u043d\u0435\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 70,
+  "fields": {
+    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0413\u0440\u0438\u0444\u0444\u0438\u0442\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 71,
+  "fields": {
+    "full_name": "\u0414\u043e\u043d \u0413\u0440\u0438\u0444\u0444\u0438\u0442\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 72,
+  "fields": {
+    "full_name": "\u0415\u043b\u0435\u043d\u0430 \u041a\u043e\u043d\u043e\u0432\u0430"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 73,
+  "fields": {
+    "full_name": "\u0413\u0430\u043b\u0438\u043d\u0430 \u041f\u043e\u043b\u043b\u0430\u043a"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 74,
+  "fields": {
+    "full_name": "\u0420\u043e\u0431\u0435\u0440\u0442 \u041d\u0430\u0439\u0441\u0442\u0440\u043e\u043c"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 75,
+  "fields": {
+    "full_name": "\u041a\u0430\u0442\u0440\u0438\u043d \u041f\u0430\u0441\u0441\u0438\u0433"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 76,
+  "fields": {
+    "full_name": "\u0419\u043e\u0445\u0430\u043d\u043d\u0435\u0441 \u042f\u043d\u0434\u0435\u0440"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 77,
+  "fields": {
+    "full_name": "\u041a\u044d\u043b \u041d\u044c\u044e\u043f\u043e\u0440\u0442"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 78,
+  "fields": {
+    "full_name": "\u041c\u0430\u0439\u043a\u043b \u0424\u0438\u0437\u0435\u0440\u0441"
+  }
+},
+{
+  "model": "library.author",
+  "pk": 79,
+  "fields": {
+    "full_name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u0421\u0430\u0432\u0435\u043b\u044c\u0435\u0432"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 1,
+  "fields": {
+    "name": "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 2,
+  "fields": {
+    "name": "\u041f\u0438\u0442\u0435\u0440 \u041f\u0440\u0435\u0441\u0441"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 3,
+  "fields": {
+    "name": "O'Reilly"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 4,
+  "fields": {
+    "name": "\u0421\u0438\u043c\u0432\u043e\u043b-\u041f\u043b\u044e\u0441"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 5,
+  "fields": {
+    "name": "Microsoft Press"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 6,
+  "fields": {
+    "name": "\u0420\u0443\u0441\u0441\u043a\u0430\u044f \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u044f"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 7,
+  "fields": {
+    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0410\u0441\u0442\u0440\u0435\u043b\u044c"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 8,
+  "fields": {
+    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0410\u0421\u0422"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 9,
+  "fields": {
+    "name": "\u0414\u041c\u041a \u041f\u0440\u0435\u0441\u0441"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 10,
+  "fields": {
+    "name": "\u0411\u0425\u0412 - \u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 11,
+  "fields": {
+    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0434\u043e\u043c \"\u0412\u0438\u043b\u044c\u044f\u043c\u0441\""
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 12,
+  "fields": {
+    "name": "Yahoo Press"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 13,
+  "fields": {
+    "name": "\u0421\u0438\u043d\u044d\u043b"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 14,
+  "fields": {
+    "name": "\u041b\u0430\u043d\u044c"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 15,
+  "fields": {
+    "name": "\u0414\u0438\u0430\u043b\u0435\u043a\u0442\u0438\u043a\u0430"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 16,
+  "fields": {
+    "name": "Russian Underground"
+  }
+},
+{
+  "model": "library.publisher",
+  "pk": 17,
+  "fields": {
+    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \"\u042d\""
+  }
+},
+{
+  "model": "library.category",
+  "pk": 1,
+  "fields": {
+    "title": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u042f\u0437\u044b\u043a"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 2,
+  "fields": {
+    "title": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0430\u0437\u043d\u043e\u0435"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 3,
+  "fields": {
+    "title": "JavaScript"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 4,
+  "fields": {
+    "title": "C/C++"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 5,
+  "fields": {
+    "title": "Python"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 6,
+  "fields": {
+    "title": "Android"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 7,
+  "fields": {
+    "title": "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0435 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 8,
+  "fields": {
+    "title": "\u0410\u043b\u0433\u043e\u0440\u0438\u0442\u043c\u044b \u0438 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b \u0434\u0430\u043d\u043d\u044b\u0445"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 9,
+  "fields": {
+    "title": "\u0421#"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 10,
+  "fields": {
+    "title": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u043d\u044b\u0435 \u0441\u0435\u0442\u0438"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 11,
+  "fields": {
+    "title": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 12,
+  "fields": {
+    "title": "\u0412\u0435\u0431-\u0434\u0438\u0437\u0430\u0439\u043d"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 1,
+  "fields": {
+    "name": "qt"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 2,
+  "fields": {
+    "name": "python"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 3,
+  "fields": {
+    "name": "angular"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 4,
+  "fields": {
+    "name": "react"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 5,
+  "fields": {
+    "name": "unity"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 6,
+  "fields": {
+    "name": "gamedev"
+  }
+},
+{
   "model": "library.book",
   "pk": 7,
   "fields": {
@@ -2159,804 +2957,6 @@
     "url": "https://cloud.mail.ru/public/CUGw/JppVLPpSW",
     "size": 10.5,
     "format": 0
-  }
-},
-{
-  "model": "library.author",
-  "pk": 1,
-  "fields": {
-    "full_name": "\u041a\u0440\u0443\u043f\u043d\u043e\u0432 \u0412 \u041d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 2,
-  "fields": {
-    "full_name": "Marijn Haverbeke"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 3,
-  "fields": {
-    "full_name": "\u0421\u0442\u043e\u044f\u043d \u0421\u0442\u0435\u0444\u0430\u043d\u043e\u0432"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 4,
-  "fields": {
-    "full_name": "\u0414\u0443\u0433\u043b\u0430\u0441 \u041a\u0440\u043e\u043a\u0444\u043e\u0440\u0434"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 5,
-  "fields": {
-    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0424\u043b\u044d\u043d\u0430\u0433\u0430\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 6,
-  "fields": {
-    "full_name": "\u0414\u0436\u043e\u043d \u0420\u0435\u0437\u0438\u0433"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 7,
-  "fields": {
-    "full_name": "\u0420\u0430\u0441\u0441 \u0424\u0435\u0440\u0433\u044e\u0441\u043e\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 8,
-  "fields": {
-    "full_name": "\u0414\u0436\u043e\u043d \u041f\u0430\u043a\u0441\u0442\u043e\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 9,
-  "fields": {
-    "full_name": "\u0418\u043b\u044c\u044f \u041a\u0430\u043d\u0442\u043e\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 10,
-  "fields": {
-    "full_name": "\u041c\u0430\u043a\u0441 \u0428\u043b\u0435\u0435"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 11,
-  "fields": {
-    "full_name": "\u041c\u0430\u0439\u043a\u043b \u0414\u043e\u0443\u0441\u043e\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 12,
-  "fields": {
-    "full_name": "\u0420\u043e\u0431\u0435\u0440\u0442 \u041c\u0430\u0440\u0442\u0438\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 13,
-  "fields": {
-    "full_name": "\u0427\u0435\u0434 \u0424\u0430\u0443\u043b\u0435\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 14,
-  "fields": {
-    "full_name": "\u0421\u0442\u0438\u0432 \u041c\u0430\u043a\u043a\u043e\u043d\u043d\u0435\u043b\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 15,
-  "fields": {
-    "full_name": "\u041c\u0430\u0442\u0432\u0435\u0435\u0432 \u0421\u0435\u0440\u0433\u0435\u0439 \u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440\u043e\u0432\u0438\u0447"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 16,
-  "fields": {
-    "full_name": "\u041c. \u041f\u0430\u0446\u0438\u0430\u043d\u0441\u043a\u0438\u0439"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 17,
-  "fields": {
-    "full_name": "\u041f\u0430\u0431\u043b\u043e \u0414\u0438\u043b\u0435\u043c\u0430\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 18,
-  "fields": {
-    "full_name": "\u041d\u0438\u043a\u043e\u043b\u0430\u0439 \u041f\u0440\u043e\u0445\u043e\u0440\u0451\u043d\u043e\u043a"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 19,
-  "fields": {
-    "full_name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u0414\u0440\u043e\u043d\u043e\u0432"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 20,
-  "fields": {
-    "full_name": "\u041b\u0443\u0438\u0441 \u041f\u0435\u0434\u0440\u043e \u041a\u043e\u044d\u043b\u044c\u043e"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 21,
-  "fields": {
-    "full_name": "\u0412\u0438\u043b\u043b\u0438 \u0420\u0438\u0447\u0430\u0440\u0442"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 22,
-  "fields": {
-    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0411\u0438\u0437\u043b\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 23,
-  "fields": {
-    "full_name": "\u042d\u043b \u0421\u0432\u0435\u0439\u0433\u0430\u0440\u0442"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 24,
-  "fields": {
-    "full_name": "\u0421\u0430\u0439\u043c\u043e\u043d \u0425\u043e\u043b\u043c\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 25,
-  "fields": {
-    "full_name": "\u042f\u043a\u043e\u0432 \u0424\u0430\u0439\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 26,
-  "fields": {
-    "full_name": "\u0410\u043d\u0442\u043e\u043d \u041c\u043e\u0438\u0441\u0435\u0435\u0432"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 27,
-  "fields": {
-    "full_name": "\u0410\u0434\u0430\u043c \u0424\u0440\u0438\u043c\u0435\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 28,
-  "fields": {
-    "full_name": "\u0414\u044d\u043d \u0411\u0435\u0439\u0434\u0435\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 29,
-  "fields": {
-    "full_name": "\u0411\u0440\u0430\u044f\u043d \u0425\u0430\u0440\u0434\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 30,
-  "fields": {
-    "full_name": "\u0411\u0438\u043b\u043b \u0424\u0438\u043b\u0438\u043f\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 31,
-  "fields": {
-    "full_name": "\u041a\u0440\u0438\u0441 \u0421\u0442\u044e\u0430\u0440\u0442"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 32,
-  "fields": {
-    "full_name": "\u041a\u0440\u0438\u0441\u0442\u0438\u043d \u041c\u0430\u0440\u0441\u0438\u043a\u0430\u043d\u043e"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 33,
-  "fields": {
-    "full_name": "\u041f\u043e\u043b \u0414\u0435\u0439\u0442\u0435\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 34,
-  "fields": {
-    "full_name": "\u0425\u0430\u0440\u0432\u0438 \u0414\u0435\u0439\u0442\u0435\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 35,
-  "fields": {
-    "full_name": "\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0435\u0440 \u0423\u043e\u043b\u0434"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 36,
-  "fields": {
-    "full_name": "\u041a\u043e\u0438\u0447\u0438 \u041c\u0430\u0446\u0443\u0434\u0430"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 37,
-  "fields": {
-    "full_name": "\u0420\u043e\u0434\u0436\u0435\u0440 \u041b\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 38,
-  "fields": {
-    "full_name": "\u042d\u0434\u0440\u0438\u0435\u043d \u041c\u043e\u0443\u044d\u0442"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 39,
-  "fields": {
-    "full_name": "\u041c\u0430\u0440\u0442\u0438\u043d \u041a\u043b\u0435\u043f\u043f\u043c\u0430\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 40,
-  "fields": {
-    "full_name": "\u0420\u0430\u0444\u0430\u044d\u043b\u043b\u043e \u0427\u0435\u043a\u043a\u043e"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 41,
-  "fields": {
-    "full_name": "\u0411\u0430\u0445\u0438\u0440\u0435\u0432 \u0410\u043b\u0435\u043a\u0441\u0435\u0439 \u041c\u0438\u0445\u0430\u0439\u043b\u043e\u0432\u0438\u0447"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 42,
-  "fields": {
-    "full_name": "\u0410\u0434\u0438\u0442\u044c\u044f \u0411\u0445\u0430\u0440\u0433\u0430\u0432\u0430"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 43,
-  "fields": {
-    "full_name": "\u0414\u0436\u043e\u0440\u0434\u0436 \u0425\u0430\u0439\u043d\u0435\u043c\u0430\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 44,
-  "fields": {
-    "full_name": "\u0413\u044d\u0440\u0438 \u041f\u043e\u043b\u043b\u0438\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 45,
-  "fields": {
-    "full_name": "\u0421\u0442\u044d\u043d\u043b\u0438 \u0421\u0435\u043b\u043a\u043e\u0432"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 46,
-  "fields": {
-    "full_name": "\u0418\u0442\u0430\u043d \u0411\u0440\u0430\u0443\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 47,
-  "fields": {
-    "full_name": "\u0414\u0436\u043e\u0437\u0435\u0444 \u0425\u043e\u043a\u0438\u043d\u0433"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 48,
-  "fields": {
-    "full_name": "\u041d\u0438\u043b \u0424\u043e\u0440\u0434"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 49,
-  "fields": {
-    "full_name": "\u0422\u0435\u0440\u0435\u0437\u0430 \u041d\u0435\u0439\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 50,
-  "fields": {
-    "full_name": "Justin Seitz"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 51,
-  "fields": {
-    "full_name": "\u041f\u0438\u0442 \u0413\u0443\u0434\u043b\u0438\u0444"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 52,
-  "fields": {
-    "full_name": "\u0414\u0438\u043e\u043c\u0438\u0434\u0438\u0441 \u0421\u043f\u0438\u043d\u0435\u043b\u043b\u0438\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 53,
-  "fields": {
-    "full_name": "\u041a\u0435\u0432\u043b\u0438\u043d \u0425\u0435\u043d\u043d\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 54,
-  "fields": {
-    "full_name": "\u0422\u043e\u043c\u0430\u0441 \u041b\u0438\u043c\u043e\u043d\u0447\u0435\u043b\u043b\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 55,
-  "fields": {
-    "full_name": "\u041a\u0440\u0438\u0441\u0442\u0438\u043d\u0430 \u0425\u043e\u0433\u0430\u043d"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 56,
-  "fields": {
-    "full_name": "\u0421\u0442\u0440\u0430\u0442\u0430 \u0427\u0435\u0439\u043b\u0430\u043f"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 57,
-  "fields": {
-    "full_name": "\u0414\u0436\u0435\u0439\u043c\u0441 \u041a\u0443\u0440\u043e\u0443\u0437"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 58,
-  "fields": {
-    "full_name": "\u041a\u0438\u0442 \u0420\u043e\u0441\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 59,
-  "fields": {
-    "full_name": "\u042d\u043d\u0434\u0440\u044e \u0422\u0430\u043d\u0435\u043d\u0431\u0430\u0443\u043c"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 60,
-  "fields": {
-    "full_name": "\u0425\u0435\u0440\u0431\u0435\u0440\u0442 \u0411\u043e\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 61,
-  "fields": {
-    "full_name": "\u041f\u0438\u0442\u0435\u0440 \u042f\u0432\u043e\u0440\u0441\u043a\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 62,
-  "fields": {
-    "full_name": "\u041c\u0430\u0439\u043a\u043b \u041c\u0438\u043a\u043e\u0432\u0441\u043a\u0438"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 63,
-  "fields": {
-    "full_name": "\u0414\u0436\u043e\u0448 \u041f\u0430\u0443\u044d\u043b\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 64,
-  "fields": {
-    "full_name": "\u0420\u043e\u0434 \u0421\u0442\u0438\u0432\u0435\u043d\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 65,
-  "fields": {
-    "full_name": "\u0414\u043e\u043d\u043d \u0424\u0435\u043b\u043a\u0435\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 66,
-  "fields": {
-    "full_name": "\u0414\u0436\u0435\u0439\u0441\u043e\u043d \u0411\u0435\u0440\u0434\u0436"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 67,
-  "fields": {
-    "full_name": "\u0410\u0440\u043d\u043e\u043b\u044c\u0434 \u0420\u043e\u0431\u0431\u0438\u043d\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 68,
-  "fields": {
-    "full_name": "\u0421\u0438\u043b\u044c\u0432\u0435\u043d \u0420\u0435\u0442\u0430\u0431\u043e\u0443\u0438\u043b"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 69,
-  "fields": {
-    "full_name": "\u041c\u0430\u0440\u0438\u043e \u0426\u0435\u0445\u043d\u0435\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 70,
-  "fields": {
-    "full_name": "\u0414\u044d\u0432\u0438\u0434 \u0413\u0440\u0438\u0444\u0444\u0438\u0442\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 71,
-  "fields": {
-    "full_name": "\u0414\u043e\u043d \u0413\u0440\u0438\u0444\u0444\u0438\u0442\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 72,
-  "fields": {
-    "full_name": "\u0415\u043b\u0435\u043d\u0430 \u041a\u043e\u043d\u043e\u0432\u0430"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 73,
-  "fields": {
-    "full_name": "\u0413\u0430\u043b\u0438\u043d\u0430 \u041f\u043e\u043b\u043b\u0430\u043a"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 74,
-  "fields": {
-    "full_name": "\u0420\u043e\u0431\u0435\u0440\u0442 \u041d\u0430\u0439\u0441\u0442\u0440\u043e\u043c"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 75,
-  "fields": {
-    "full_name": "\u041a\u0430\u0442\u0440\u0438\u043d \u041f\u0430\u0441\u0441\u0438\u0433"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 76,
-  "fields": {
-    "full_name": "\u0419\u043e\u0445\u0430\u043d\u043d\u0435\u0441 \u042f\u043d\u0434\u0435\u0440"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 77,
-  "fields": {
-    "full_name": "\u041a\u044d\u043b \u041d\u044c\u044e\u043f\u043e\u0440\u0442"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 78,
-  "fields": {
-    "full_name": "\u041c\u0430\u0439\u043a\u043b \u0424\u0438\u0437\u0435\u0440\u0441"
-  }
-},
-{
-  "model": "library.author",
-  "pk": 79,
-  "fields": {
-    "full_name": "\u0412\u043b\u0430\u0434\u0438\u043c\u0438\u0440 \u0421\u0430\u0432\u0435\u043b\u044c\u0435\u0432"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 1,
-  "fields": {
-    "name": "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 2,
-  "fields": {
-    "name": "\u041f\u0438\u0442\u0435\u0440 \u041f\u0440\u0435\u0441\u0441"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 3,
-  "fields": {
-    "name": "O'Reilly"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 4,
-  "fields": {
-    "name": "\u0421\u0438\u043c\u0432\u043e\u043b-\u041f\u043b\u044e\u0441"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 5,
-  "fields": {
-    "name": "Microsoft Press"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 6,
-  "fields": {
-    "name": "\u0420\u0443\u0441\u0441\u043a\u0430\u044f \u0440\u0435\u0434\u0430\u043a\u0446\u0438\u044f"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 7,
-  "fields": {
-    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0410\u0441\u0442\u0440\u0435\u043b\u044c"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 8,
-  "fields": {
-    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \u0410\u0421\u0422"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 9,
-  "fields": {
-    "name": "\u0414\u041c\u041a \u041f\u0440\u0435\u0441\u0441"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 10,
-  "fields": {
-    "name": "\u0411\u0425\u0412 - \u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 11,
-  "fields": {
-    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0434\u043e\u043c \"\u0412\u0438\u043b\u044c\u044f\u043c\u0441\""
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 12,
-  "fields": {
-    "name": "Yahoo Press"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 13,
-  "fields": {
-    "name": "\u0421\u0438\u043d\u044d\u043b"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 14,
-  "fields": {
-    "name": "\u041b\u0430\u043d\u044c"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 15,
-  "fields": {
-    "name": "\u0414\u0438\u0430\u043b\u0435\u043a\u0442\u0438\u043a\u0430"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 16,
-  "fields": {
-    "name": "Russian Underground"
-  }
-},
-{
-  "model": "library.publisher",
-  "pk": 17,
-  "fields": {
-    "name": "\u0418\u0437\u0434\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e \"\u042d\""
-  }
-},
-{
-  "model": "library.category",
-  "pk": 1,
-  "fields": {
-    "title": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u042f\u0437\u044b\u043a"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 2,
-  "fields": {
-    "title": "\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0430\u0437\u043d\u043e\u0435"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 3,
-  "fields": {
-    "title": "JavaScript"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 4,
-  "fields": {
-    "title": "C/C++"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 5,
-  "fields": {
-    "title": "Python"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 6,
-  "fields": {
-    "title": "Android"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 7,
-  "fields": {
-    "title": "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u043e\u0435 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 8,
-  "fields": {
-    "title": "\u0410\u043b\u0433\u043e\u0440\u0438\u0442\u043c\u044b \u0438 \u0441\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u044b \u0434\u0430\u043d\u043d\u044b\u0445"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 9,
-  "fields": {
-    "title": "\u0421#"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 10,
-  "fields": {
-    "title": "\u041a\u043e\u043c\u043f\u044c\u044e\u0442\u0435\u0440\u043d\u044b\u0435 \u0441\u0435\u0442\u0438"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 11,
-  "fields": {
-    "title": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c"
-  }
-},
-{
-  "model": "library.category",
-  "pk": 12,
-  "fields": {
-    "title": "\u0412\u0435\u0431-\u0434\u0438\u0437\u0430\u0439\u043d"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 1,
-  "fields": {
-    "name": "qt"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 2,
-  "fields": {
-    "name": "python"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 3,
-  "fields": {
-    "name": "angular"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 4,
-  "fields": {
-    "name": "react"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 5,
-  "fields": {
-    "name": "unity"
-  }
-},
-{
-  "model": "library.tag",
-  "pk": 6,
-  "fields": {
-    "name": "gamedev"
   }
 }
 ]
