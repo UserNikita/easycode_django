@@ -111,11 +111,9 @@
                     </div>
                 </div>
                 <div class="uk-card-footer">
-                    <ul>
-                        {% for like in book.likes.all %}
-                            <img class="small-avatar" src="{{ like.user.profile.get_photo_url }}">
-                        {% endfor %}
-                    </ul>
+                    {% for like in book.likes.all %}
+                        <img class="small-avatar uk-border-circle" src="{{ like.user.profile.get_photo_url }}">
+                    {% endfor %}
                 </div>
             </div>
 
@@ -126,8 +124,8 @@
                             <header class="uk-comment-header">
                                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                     <div class="uk-width-auto">
-                                        <img class="uk-comment-avatar uk-border-circle"
-                                             src="{% static 'img/default_avatar.jpg' %}"
+                                        <img class="uk-comment-avatar uk-border-circle medium-avatar"
+                                             src="{{ comment.author.profile.get_photo_url }}"
                                              width="80" height="80" alt="">
                                     </div>
                                     <div class="uk-width-expand">
