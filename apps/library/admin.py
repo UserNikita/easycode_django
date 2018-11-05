@@ -24,8 +24,12 @@ class PublisherAdmin(admin.ModelAdmin):
     pass
 
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color',)
+
+
 admin.site.register(Book, BookAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Publisher, PublisherAdmin)
 admin.site.register(Category)
-admin.site.register(Tag)
+admin.site.register(Tag, TagAdmin)

@@ -9,6 +9,30 @@ FILE_FORMATS = (
     (1, 'DJVU'),
 )
 
+BACKGROUND_COLORS = (
+    ("bgm-white", "White"),
+    ("bgm-black", "Black"),
+    ("bgm-brown", "Brown"),
+    ("bgm-pink", "Pink"),
+    ("bgm-red", "Red"),
+    ("bgm-blue", "Blue"),
+    ("bgm-purple", "Purple"),
+    ("bgm-deeppurple", "Deep purple"),
+    ("bgm-lightblue", "Light blue"),
+    ("bgm-cyan", "Cyan"),
+    ("bgm-teal", "Teal"),
+    ("bgm-green", "Green"),
+    ("bgm-lightgreen", "Light green"),
+    ("bgm-lime", "Lime"),
+    ("bgm-yellow", "Yellow"),
+    ("bgm-amber", "Amber"),
+    ("bgm-orange", "Orange"),
+    ("bgm-deeporange", "Deep orange"),
+    ("bgm-gray", "Gray"),
+    ("bgm-bluegray", "Blue gray"),
+    ("bgm-indigo", "Indigo"),
+)
+
 
 class Book(models.Model):
     title = models.CharField(verbose_name="Название", max_length=500)
@@ -104,6 +128,7 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(verbose_name='Название', max_length=255)
+    color = models.CharField(verbose_name="Цвет", max_length=20, choices=BACKGROUND_COLORS, default='bgm-gray')
 
     def __str__(self):
         return self.name

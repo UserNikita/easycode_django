@@ -107,6 +107,13 @@
                                     <a href="{% url 'personal_area:registration' %}">зарегистрироваться</a>
                                 </b>
                             {% endif %}
+                            {% if book.tags.exists %}
+                                <p>
+                                    {% for tag in book.tags.all %}
+                                        <span class="tag {{ tag.color }}">{{ tag }}</span>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
