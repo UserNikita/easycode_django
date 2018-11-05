@@ -47,77 +47,75 @@
                     </div>
                 </div>
                 <div class="uk-width-expand@m">
-                    <ul uk-tab="animation: true; duration: 100">
-                        <li class="uk-active">
-                            <a href="#">Информация</a>
+                    <ul uk-accordion="multiple: true">
+                        <li class="uk-open">
+                            <a class="uk-accordion-title" href="#">Информация</a>
+                            <div class="uk-accordion-content">
+                                <table class="uk-table uk-table-divider">
+                                    <tbody>
+                                    <tr>
+                                        <th>Username</th>
+                                        <td class="uk-text-right">{{ user.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>E-mail</th>
+                                        <td class="uk-text-right">{{ user.email }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Имя</th>
+                                        <td class="uk-text-right">{{ user.first_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Фамилия</th>
+                                        <td class="uk-text-right">{{ user.last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Дата регистрации</th>
+                                        <td class="uk-text-right">{{ user.date_joined }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Последнего входа</th>
+                                        <td class="uk-text-right">{{ user.last_login }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </li>
                         <li>
-                            <a href="#">Комментарии</a>
+                            <a class="uk-accordion-title" href="#">Комментарии</a>
+                            <div class="uk-accordion-content">
+                                <div class="uk-margin">Всего комментариев {{ user.comment_set.count }}</div>
+                                <ul class="uk-list">
+                                    {% for comment in user.comment_set.all %}
+                                        <li>
+                                            <span uk-icon="comment" style="color: blue"></span>
+                                            <span class="uk-text-meta">{{ comment.creation_date }}</span>
+                                            {{ comment.content_type }}:
+                                            <a href="{{ comment.content_object.get_absolute_url }}">
+                                                {{ comment.content_object }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </li>
                         <li>
-                            <a href="#">Лайки</a>
-                        </li>
-                    </ul>
-                    <ul class="uk-switcher">
-                        <li>
-                            <table class="uk-table uk-table-divider">
-                                <tbody>
-                                <tr>
-                                    <th>Username</th>
-                                    <td class="uk-text-right">{{ user.username }}</td>
-                                </tr>
-                                <tr>
-                                    <th>E-mail</th>
-                                    <td class="uk-text-right">{{ user.email }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Имя</th>
-                                    <td class="uk-text-right">{{ user.first_name }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Фамилия</th>
-                                    <td class="uk-text-right">{{ user.last_name }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Дата регистрации</th>
-                                    <td class="uk-text-right">{{ user.date_joined }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Последнего входа</th>
-                                    <td class="uk-text-right">{{ user.last_login }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                        <li>
-                            <div class="uk-margin">Всего комментариев {{ user.comment_set.count }}</div>
-                            <ul class="uk-list">
-                                {% for comment in user.comment_set.all %}
-                                    <li>
-                                        <span uk-icon="comment" style="color: blue"></span>
-                                        <span class="uk-text-meta">{{ comment.creation_date }}</span>
-                                        {{ comment.content_type }}:
-                                        <a href="{{ comment.content_object.get_absolute_url }}">
-                                            {{ comment.content_object }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="uk-margin">Всего лайков {{ user.like_set.count }}</div>
-                            <ul class="uk-list">
-                                {% for like in user.like_set.all %}
-                                    <li>
-                                        <span uk-icon="heart" style="color: red"></span>
-                                        <span class="uk-text-meta">{{ like.creation_date }}</span>
-                                        {{ like.content_type }}:
-                                        <a href="{{ like.content_object.get_absolute_url }}">
-                                            {{ like.content_object }}
-                                        </a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                            <a class="uk-accordion-title" href="#">Лайки</a>
+                            <div class="uk-accordion-content">
+                                <div class="uk-margin">Всего лайков {{ user.like_set.count }}</div>
+                                <ul class="uk-list">
+                                    {% for like in user.like_set.all %}
+                                        <li>
+                                            <span uk-icon="heart" style="color: red"></span>
+                                            <span class="uk-text-meta">{{ like.creation_date }}</span>
+                                            {{ like.content_type }}:
+                                            <a href="{{ like.content_object.get_absolute_url }}">
+                                                {{ like.content_object }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
