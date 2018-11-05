@@ -15,11 +15,20 @@
                             <div class="uk-width-expand">
                                 <h3 class="uk-card-title uk-margin-remove-bottom">{{ post.title }}</h3>
                                 <div class="uk-text-meta">
-                                    {{ post.author }}
-                                    {{ post.create_date }}
-                                    <br>
-                                    comments {{ post.comments.count }}
-                                    likes {{ post.likes.count }}
+                                    <div>
+                                        <span uk-icon="icon:user; ratio:0.7"></span>
+                                        {{ post.author }}
+                                        &nbsp;
+                                        <span uk-icon="icon:calendar; ratio:0.7"></span>
+                                        {{ post.create_date }}
+                                    </div>
+                                    <div>
+                                        <span uk-icon="icon:comments; ratio:0.7"></span>
+                                        {{ post.comments.count }}
+                                        &nbsp;
+                                        <span uk-icon="icon:heart; ratio:0.7"></span>
+                                        {{ post.likes.count }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="uk-width-auto">
