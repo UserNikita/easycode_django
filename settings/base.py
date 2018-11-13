@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'apps.blog',
     'apps.personal_area',
     'apps.library',
+    'apps.assay',
 
     'django_summernote',
     'django_filters',
