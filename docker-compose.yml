@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: gunicorn wsgi:application --bind 0.0.0.0:8000
+#    command: gunicornb --bind 0.0.0.0:8000 --settings=settings.env.dev_docker
+    volumes:
+      - .:/easycode
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

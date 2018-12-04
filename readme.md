@@ -1,6 +1,28 @@
 [![Build Status](https://travis-ci.org/UserNikita/easycode.svg?branch=master)](https://travis-ci.org/UserNikita/easycode)
 
 
+### Запуск в докере
+
+1. В папке с проектом выполнить команду
+    ```bash
+    docker-compose up -d
+    ```
+    
+2. Зайти в контейнер с django приложением
+    ```bash
+    docker exec -ti easycode_web_1 bash
+    ```
+    
+3. Выполнить миграции
+    ```bash
+    python manage.py migrate --settings.env.dev_docker
+    ```
+    
+4. Собрать статику
+    ```bash
+    python manage.py collectstatic --settings.env.dev_docker
+    ```
+
 ### Обновление на сервере pythonanywhere
 
 1. Создать новую консоль
