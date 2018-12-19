@@ -3,6 +3,11 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.templatetags.static import static
 from django.utils.safestring import mark_safe
+from django.core.files.uploadedfile import SimpleUploadedFile
+from PIL import Image
+import io
+import os
+
 
 FILE_FORMATS = (
     (0, 'PDF'),
@@ -37,7 +42,8 @@ BACKGROUND_COLORS = (
 class Book(models.Model):
     title = models.CharField(verbose_name="Название", max_length=500)
     description = models.TextField(verbose_name="Описание", blank=True)
-    cover = models.ImageField(verbose_name="Обложка", blank=True)
+    cover = models.ImageField(verbose_name="Обложка", blank=True, upload_to='library/covers')
+    cover_thumbnail = models.ImageField(verbose_name="Превью", blank=True, upload_to='library/thumbnails')
     authors = models.ManyToManyField(verbose_name="Авторы", to='Author')
     publishers = models.ManyToManyField(verbose_name="Издательства", to='Publisher')
     year = models.PositiveIntegerField(verbose_name="Год издания")
@@ -51,6 +57,30 @@ class Book(models.Model):
 
     likes = GenericRelation(to='personal_area.Like', related_query_name='books')
     comments = GenericRelation(to='personal_area.Comment', related_query_name='books')
+
+    def create_thumbnail(self):
+        """Метод создания миниатюрной обложки для книги"""
+        if not self.cover:  # Если обложки нет, то и создавать миниатюру не нужно
+            return
+
+        # Если миниатюра уже была создана ранее, то её необходимо удалить
+        old_file = self.cover_thumbnail
+        if old_file and os.path.isfile(old_file.path):
+            os.remove(old_file.path)
+
+        image = Image.open(io.BytesIO(self.cover.read()))
+        image.thumbnail(size=(256, image.height), resample=Image.ANTIALIAS)
+        temp_handle = io.BytesIO()
+        image.save(temp_handle, format='png')
+        temp_handle.seek(0)
+        suf = SimpleUploadedFile(os.path.split(self.cover.name)[-1], temp_handle.read(), content_type='image/png')
+        file_name = '{0}.png'.format(os.path.splitext(suf.name)[0])
+        self.cover_thumbnail.save(name=file_name, content=suf, save=False)
+        temp_handle.close()
+
+    def save(self, *args, **kwargs):
+        self.create_thumbnail()
+        super(Book, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('library:book_detail', args=(self.id,))
