@@ -90,8 +90,13 @@ class Book(models.Model):
             return self.cover.url
         return static('img/missing_book_cover.jpg')
 
+    def get_cover_thumbnail_url(self):
+        if self.cover_thumbnail:
+            return self.cover_thumbnail.url
+        return static('img/missing_book_cover.jpg')
+
     def get_cover(self):
-        img_html_tag = '<img src="%s" width="50px">' % self.get_cover_url()
+        img_html_tag = '<img src="%s" width="50px">' % self.get_cover_thumbnail_url()
         return mark_safe(img_html_tag)
 
     get_cover.short_description = "Обложка"
