@@ -31,7 +31,13 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = ('year', 'category', CoverThumbnailFilter, 'publishers', 'authors',)
     filter_horizontal = ('authors', 'publishers', 'tags',)
     inlines = (BookFileInline,)
+    actions = ('create_cover_thumbnails',)
     form = BookAdminForm
+
+    def create_cover_thumbnails(self, request, queryset):
+        for book in queryset.filter(cover_thumbnail=''):
+            book.save()  # После сохранения сгенерируется миниатюрная обложка
+    create_cover_thumbnails.short_description = 'Создать миниатюрные обложки'
 
 
 class AuthorAdmin(admin.ModelAdmin):
