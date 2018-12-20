@@ -13,7 +13,12 @@
                     <div class="uk-card-header">
                         <div uk-grid>
                             <div class="uk-width-expand">
-                                <h3 class="uk-card-title uk-margin-remove-bottom">{{ post.title }}</h3>
+                                <h3 class="uk-card-title uk-margin-remove-bottom">
+                                    {{ post.title }}
+                                    {% if post.draft %}
+                                        (Draft)
+                                    {% endif %}
+                                </h3>
                                 <div class="uk-text-meta">
                                     <div>
                                         <span uk-icon="icon:user; ratio:0.7"></span>
