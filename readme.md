@@ -7,21 +7,7 @@
     ```bash
     docker-compose up -d
     ```
-    
-2. Зайти в контейнер с django приложением
-    ```bash
-    docker exec -ti easycode_web_1 bash
-    ```
-    
-3. Выполнить миграции
-    ```bash
-    python manage.py migrate --settings.env.dev_docker
-    ```
-    
-4. Собрать статику
-    ```bash
-    python manage.py collectstatic --settings.env.dev_docker
-    ```
+
 
 ### Обновление на сервере pythonanywhere
 
@@ -73,4 +59,19 @@
 2. Выполнить команду
     ```bash
     python manage.py dumpdata library --indent=2 --output=./apps/library/fixtures/library_data.json --settings=settings.env.prod_pythonanywhere
+    ```
+
+
+### Построить диаграму моделей проекта для всех приложений
+
+Данная возможность доступна только если проект запущен в докере
+
+1. Войти в контейнер
+    ```bash
+    docker exec -ti easycode_web_1 bash
+    ```
+
+2. Выполнить команду
+    ```bash
+    python manage.py graph_models -a -g -o media/project_diagram.png
     ```
