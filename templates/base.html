@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{% block title %}Easy Code{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themes/github.css' %}">
+    <script src="{% static 'js/uikit.min.js' %}"></script>
+    <script src="{% static 'js/uikit-icons.min.js' %}"></script>
+    <script src="{% static 'js/rainbow-custom.min.js' %}"></script>
+</head>
+<body>
+<div id="sidebar_menu" uk-offcanvas>
+    <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <span class="uk-nav-header">Меню</span>
+        <ul class="uk-nav uk-nav-default uk-margin-right">
+            {% if user.is_anonymous %}
+                <li>
+                    <a href="{% url 'personal_area:login' %}">
+                        <span class="uk-margin-small-right" uk-icon="sign-in"></span>
+                        Вход
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'personal_area:registration' %}">
+                        <span class="uk-margin-small-right" uk-icon="sign-in"></span>
+                        Регистрация
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'personal_area:profile_detail' %}">
+                        <span class="uk-margin-small-right" uk-icon="user"></span>
+                        Профиль
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'personal_area:logout' %}">
+                        <span class="uk-margin-small-right" uk-icon="sign-out"></span>
+                        Выход
+                    </a>
+                </li>
+            {% endif %}
+            <li class="uk-nav-divider"></li>
+            <li>
+                <a href="{% url 'blog:post_list' %}">
+                    <span class="uk-margin-small-right" uk-icon="folder"></span>
+                    Блог
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'library:book_list' %}">
+                    <span class="uk-margin-small-right" uk-icon="folder"></span>
+                    Книги
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="uk-section-primary">
+    <nav class="uk-navbar-container uk-navbar-transparent">
+        <ul class="uk-navbar-nav">
+            <li class="uk-active">
+                <a href="#sidebar_menu" uk-toggle>
+                    <span uk-icon="menu"></span>
+                </a>
+            </li>
+            <li class="uk-active">
+                <a href="{% url 'blog:post_list' %}">Easy Code</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<div class="uk-container uk-align-center">
+    <ul class="uk-breadcrumb uk-overflow-auto">
+        {% block breadcrumb %}
+        {% endblock %}
+    </ul>
+</div>
+
+<div class="uk-container uk-align-center">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

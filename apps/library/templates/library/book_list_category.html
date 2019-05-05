@@ -1,0 +1,10 @@
+{% extends 'library/book_list.html' %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'library:book_list' %}">Все книги</a></li>
+    <li><span>{{ category }}</span></li>
+{% endblock %}
+
+{% block pagination %}
+    {% include 'library/pagination_category.html' %}
+{% endblock %}

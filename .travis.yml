@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.5"
+# Установка зависимостей
+install:
+  - pip install -r requirements/common.txt
+# Команда для запуска тестов
+script:
+  - python manage.py test --settings=settings.env.test
+# Деплой на Heroku
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: "8cf9d32e-f3b4-4632-aa20-63024c7d09b1"
+#  app:
+#    master: ezcd

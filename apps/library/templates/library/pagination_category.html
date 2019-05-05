@@ -1,0 +1,39 @@
+<ul class="uk-pagination uk-flex-center" uk-margin>
+    {% if page_obj.has_previous %}
+        <li>
+            <a href="{% url 'library:category_book_list' category.id page_obj.previous_page_number %}?{{ request.GET.urlencode }}">
+                <span uk-pagination-previous></span>
+            </a>
+        </li>
+    {% else %}
+        <li class="uk-disabled">
+            <a href="#">
+                <span uk-pagination-previous></span>
+            </a>
+        </li>
+    {% endif %}
+    {% for page_num in paginator.page_range %}
+        {% if page_num == page_obj.number %}
+            <li class="uk-active">
+                <span>{{ page_num }}</span>
+            </li>
+        {% else %}
+            <li>
+                <a href="{% url 'library:category_book_list' category.id page_num %}?{{ request.GET.urlencode }}">{{ page_num }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li>
+            <a href="{% url 'library:category_book_list' category.id page_obj.next_page_number %}?{{ request.GET.urlencode }}">
+                <span uk-pagination-next></span>
+            </a>
+        </li>
+    {% else %}
+        <li class="uk-disabled">
+            <a href="#">
+                <span uk-pagination-next></span>
+            </a>
+        </li>
+    {% endif %}
+</ul>

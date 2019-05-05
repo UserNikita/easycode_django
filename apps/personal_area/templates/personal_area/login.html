@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="uk-flex uk-flex-center">
+        <div class="uk-card uk-card-default uk-width-1-2@m">
+            <div class="uk-card-header uk-text-center">
+                <h3 class="uk-card-title uk-margin-remove-bottom">Авторизация</h3>
+            </div>
+            <form class="uk-form-horizontal" method="post">
+                <div class="uk-card-body">
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                        <div class="uk-text-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+                    <div class="uk-margin">
+                        <label for="{{ form.username.id_for_label }}" class="uk-form-label">
+                            {{ form.username.label }}
+                        </label>
+                        <div class="uk-form-controls">
+                            {{ form.username }}
+                            <div class="uk-text-meta">
+                                {{ form.username.help_text|safe }}
+                            </div>
+                            {% if form.username.errors %}
+                                <div class="uk-text-danger">
+                                    {{ form.username.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="uk-margin">
+                        <label for="{{ form.password.id_for_label }}" class="uk-form-label">
+                            {{ form.password.label }}
+                        </label>
+                        <div class="uk-form-controls">
+                            {{ form.password }}
+                            <div class="uk-text-meta">
+                                {{ form.password.help_text|safe }}
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="uk-text-danger">
+                                    {{ form.password.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-footer">
+                    <div class="uk-flex uk-flex-between uk-flex-middle">
+                        <div>
+                            <button class="uk-button uk-button-primary" type="submit">
+                                Войти
+                            </button>
+                        </div>
+                        <div class="">
+                            <a class="uk-button uk-button-link" href="{% url 'personal_area:registration' %}">
+                                Зарегистрироваться
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
