@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^', include(('apps.personal_area.urls', 'personal_area'), namespace='personal_area')),
     url(r'^library/', include(('apps.library.urls', 'library'), namespace='library')),
     url(r'^api/library/', include(('apps.library.api_urls', 'library_api'), namespace='library_api')),
+    url(r'^assay/', include(('apps.assay.urls', 'assay'), namespace='assay')),
     url(r'^summernote/', include('django_summernote.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
