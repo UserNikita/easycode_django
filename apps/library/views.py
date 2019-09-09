@@ -75,23 +75,6 @@ class BookUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = BookForm
     permission_required = ['library.change_book']
 
-    def get_context_data(self, **kwargs):
-        context = super(BookUpdateView, self).get_context_data(**kwargs)
-        if self.request.POST:
-            book_file_formset = BookFileFormset(self.request.POST,
-                                                instance=self.object)
-        else:
-            book_file_formset = BookFileFormset(instance=self.object)
-        context['book_file_formset'] = book_file_formset
-        return context
-
-    def form_valid(self, form):
-        obj = super(BookUpdateView, self).form_valid(form=form)
-        formset = self.get_context_data(**self.kwargs)['book_file_formset']
-        if formset.is_valid():  # TODO: Заваливать валидацию полностью, если невалидный формсет
-            formset.save()
-        return obj
-
 
 class BookCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'library/book_create.html'

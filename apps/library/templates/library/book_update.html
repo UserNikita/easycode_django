@@ -105,7 +105,36 @@
                         {{ form.page_count.errors }}
                     </div>
                 </div>
-                {{ book_file_formset }}
+
+
+                 <div class="uk-margin">
+                    <label for="{{ form.url.id_for_label }}" class="uk-form-label">
+                        {{ form.url.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.url }}
+                        {{ form.url.errors }}
+                    </div>
+                </div>
+                 <div class="uk-margin">
+                    <label for="{{ form.size.id_for_label }}" class="uk-form-label">
+                        {{ form.size.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.size }}
+                        {{ form.size.errors }}
+                    </div>
+                </div>
+                 <div class="uk-margin">
+                    <label for="{{ form.format.id_for_label }}" class="uk-form-label">
+                        {{ form.format.label }}
+                    </label>
+                    <div class="uk-form-controls">
+                        {{ form.format }}
+                        {{ form.format.errors }}
+                    </div>
+                </div>
+
                 <div class="uk-margin">
                     <button type="submit" class="uk-button uk-button-primary">
                         Сохранить

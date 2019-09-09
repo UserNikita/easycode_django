@@ -17,6 +17,9 @@ class BookForm(forms.ModelForm):
             'category': forms.Select({'class': 'uk-select uk-form-width-large'}),
             'tags': forms.SelectMultiple({'class': 'uk-select uk-form-width-large'}),
             'page_count': forms.NumberInput({'class': 'uk-input uk-form-width-large'}),
+            'url': forms.URLInput({'class': 'uk-input uk-form-width-large'}),
+            'size': forms.NumberInput({'class': 'uk-input uk-form-width-large'}),
+            'format': forms.Select({'class': 'uk-select uk-form-width-large'}),
         }
 
 

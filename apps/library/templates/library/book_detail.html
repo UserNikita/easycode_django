@@ -88,17 +88,12 @@
                             </p>
                             {% if not request.user.is_anonymous %}
                                 <b>Ссылки для скачивания</b>
-                                <ul>
-                                    {% for file in book.bookfile_set.all %}
-                                        <li>
-                                            <a href="{{ file.url }}" target="_blank" class="book-file-link">
-                                                {{ file.url }}
-                                                <span uk-icon="link"></span>
-                                            </a>
-                                            {{ file.size }} mb ({{ file.get_format_display }})
-                                        </li>
-                                    {% endfor %}
-                                </ul>
+                                <br>
+                                <a href="{{ book.url }}" target="_blank" class="book-file-link">
+                                    {{ book.url }}
+                                    <span uk-icon="link"></span>
+                                </a>
+                                {{ book.size }} mb ({{ book.get_format_display }})
                             {% else %}
                                 <b>
                                     Для скачивания файла необходимо
