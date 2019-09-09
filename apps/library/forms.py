@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import inlineformset_factory
 from django_summernote.widgets import SummernoteWidget
-from .models import Book, BookFile, Author, Publisher, Tag
+from .models import Book, Author, Publisher, Tag
 
 
 class BookForm(forms.ModelForm):
@@ -18,12 +18,6 @@ class BookForm(forms.ModelForm):
             'tags': forms.SelectMultiple({'class': 'uk-select uk-form-width-large'}),
             'page_count': forms.NumberInput({'class': 'uk-input uk-form-width-large'}),
         }
-
-
-class BookFileForm(forms.ModelForm):
-    class Meta:
-        model = BookFile
-        fields = '__all__'
 
 
 class BookFilterForm(forms.Form):
@@ -47,6 +41,3 @@ class BookAdminForm(forms.ModelForm):
         widgets = {
             'description': SummernoteWidget(),
         }
-
-
-BookFileFormset = inlineformset_factory(Book, BookFile, form=BookFileForm, extra=1)

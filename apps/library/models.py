@@ -113,20 +113,6 @@ class Book(models.Model):
         verbose_name_plural = "Книги"
 
 
-class BookFile(models.Model):
-    book = models.ForeignKey(to='Book', verbose_name='Книга', on_delete=models.CASCADE)
-    url = models.URLField(verbose_name='Ссылка для скачивания')
-    size = models.FloatField(verbose_name='Размер файла', help_text='Условный размер файла в мегабайтах')
-    format = models.PositiveSmallIntegerField(verbose_name='Формат файла', choices=FILE_FORMATS, default=0)
-
-    def __str__(self):
-        return self.book.title
-
-    class Meta:
-        verbose_name = 'Файл книги'
-        verbose_name_plural = 'Файлы книг'
-
-
 class Author(models.Model):
     full_name = models.CharField(verbose_name='Полное имя', max_length=255)
 

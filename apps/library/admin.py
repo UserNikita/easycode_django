@@ -21,16 +21,10 @@ class CoverThumbnailFilter(admin.SimpleListFilter):
         return queryset
 
 
-class BookFileInline(admin.StackedInline):
-    model = BookFile
-    extra = 0
-
-
 class BookAdmin(admin.ModelAdmin):
     list_display = ('get_cover', 'title', 'year',)
     list_filter = ('year', 'category', CoverThumbnailFilter, 'publishers', 'authors',)
     filter_horizontal = ('authors', 'publishers', 'tags',)
-    inlines = (BookFileInline,)
     actions = ('create_cover_thumbnails',)
     form = BookAdminForm
 
