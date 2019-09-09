@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+    <b>{{ assay.title }}</b>
+    <br>
+    Количество вопросов: {{ assay.question_set.count }}
+    <br>
+    Отвечено {{ question_finished_count }} из {{ assay.question_set.count }}
+    <br>
+    Завершен: {% if is_finished %}Да{% else %}Нет{% endif %}
+    <br>
+    <a href="">{% if is_started %}Продолжить{% else %}Начать{% endif %}</a>
+{% endblock %}

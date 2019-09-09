@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load blog_template_tags %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block content %}
+    <div class="uk-child-width-expand" uk-grid>
+        <div>
+            {% for assay in assay_list %}
+                <a href="{{ assay.get_absolute_url }}">{{ assay }}</a>
+            {% empty %}
+                Пусто
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

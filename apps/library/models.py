@@ -54,6 +54,9 @@ class Book(models.Model):
     draft = models.BooleanField(verbose_name="Черновик", default=False)
     created_date = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
     changed_date = models.DateTimeField(verbose_name="Дата последнего изменения", auto_now=True)
+    url = models.URLField(verbose_name='Ссылка для скачивания')
+    size = models.FloatField(verbose_name='Размер файла', help_text='Условный размер файла в мегабайтах')
+    format = models.PositiveSmallIntegerField(verbose_name='Формат файла', choices=FILE_FORMATS, default=0)
 
     likes = GenericRelation(to='personal_area.Like', related_query_name='books')
     comments = GenericRelation(to='personal_area.Comment', related_query_name='books')
