@@ -119,11 +119,11 @@
                 </div>
             </div>
 
-            <ul class="uk-comment-list uk-width-2-3@m uk-padding-small">
+            <ul class="uk-comment-list  uk-padding-small">
                 {% for comment in book.comments.all %}
                     <li id="comment-{{ comment.id }}">
-                        <div class="uk-comment uk-visible-toggle">
-                            <header class="uk-comment-header">
+                        <div class="uk-comment uk-visible-toggle" tabindex="-1">
+                            <header class="uk-comment-header uk-position-relative">
                                 <div class="uk-grid-medium uk-flex-middle" uk-grid>
                                     <div class="uk-width-auto">
                                         <img class="uk-comment-avatar uk-border-circle medium-avatar"
@@ -139,6 +139,16 @@
                                         </p>
                                     </div>
                                 </div>
+{#                                {% if comment.author == request.user %}#}
+                                    <div class="uk-position-top-right uk-position-small uk-hidden-hover">
+                                        <form method="post" action="{% url 'library:comment_delete' comment.id %}">
+                                            {% csrf_token %}
+                                            <button class="uk-link-muted uk-button uk-button-text">
+                                                Удалить
+                                            </button>
+                                        </form>
+                                    </div>
+{#                                {% endif %}#}
                             </header>
                             <div class="uk-comment-body">
                                 {{ comment.text }}

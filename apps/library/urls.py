@@ -28,8 +28,13 @@ urlpatterns = [
         name='book_create'
     ),
     url(
-        regex=r'^post/(?P<pk>\d+)/delete/$',
+        regex=r'^book/(?P<pk>\d+)/delete/$',
         view=BookDeleteView.as_view(),
         name='book_delete'
+    ),
+    url(
+        regex=r'^comment/(?P<pk>\d+)/delete/$',
+        view=CommentDeleteView.as_view(),
+        name='comment_delete'
     ),
 ]

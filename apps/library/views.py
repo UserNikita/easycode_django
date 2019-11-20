@@ -1,9 +1,10 @@
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
-from django.views.generic.edit import FormMixin, ProcessFormView
+from django.views.generic.edit import FormMixin, ProcessFormView, DeletionMixin
 from django.contrib.auth.mixins import UserPassesTestMixin, PermissionRequiredMixin
 from django_filters.views import FilterMixin
 
 from apps.personal_area.forms import CommentForm
+from apps.personal_area.models import Comment
 from .filtersets import BookFilterSet
 from .models import *
 from .forms import *
@@ -90,3 +91,16 @@ class BookDeleteView(PermissionRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('library:book_list')
+
+
+class CommentDeleteView(UserPassesTestMixin, DeleteView):
+    model = Comment
+
+    def test_func(self):
+        if self.get_object().author == self.request.user or self.request.user.is_superuser:
+            return True
+        return False
+
+    def get_success_url(self):
+        obj = self.get_object()
+        return reverse('library:book_detail', args=(obj.content_object.id,))
