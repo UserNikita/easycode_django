@@ -16,13 +16,19 @@
                             <div class="uk-card-media-top">
                                 <img src="{{ book.get_cover_thumbnail_url }}" width="100%" alt="">
                             </div>
-                            <div class="uk-card-body">
+                            <div class="uk-card-header">
                                 <div uk-grid>
                                     <div class="uk-width-expand">
-                                        <span class="">{{ book.title }}</span>
+                                        <div class="uk-text-meta">
+                                            <span uk-icon="icon:comment; ratio:0.7"></span>
+                                            {{ book.comments.count }}
+                                            &nbsp;
+                                            <span uk-icon="icon:heart; ratio:0.7"></span>
+                                            {{ book.likes.count }}
+                                        </div>
                                     </div>
                                     <div class="uk-width-auto">
-                                        <a uk-icon="more-vertical"></a>
+                                        <a uk-icon="icon:more-vertical; ratio:0.7"></a>
                                         <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
                                             <ul class="uk-nav uk-dropdown-nav">
                                                 <li>
@@ -47,6 +53,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="uk-card-body">
+                                <span class="">{{ book.title }}</span>
                             </div>
                             <div class="uk-card-footer">
                                 <div uk-grid>
