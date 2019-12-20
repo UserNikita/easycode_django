@@ -26,7 +26,9 @@ class LibraryTestCase(TestCase):
         cls.book = Book.objects.create(
             title='Book title',
             description='Description',
-            year=2018
+            year=2018,
+            url='http://example.com/book/1/',
+            size=2.5,
         )
 
     @tag('list', 'anonymous')
