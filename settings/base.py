@@ -21,7 +21,6 @@ INSTALLED_APPS = [
 
     'django_summernote',
     'django_filters',
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
