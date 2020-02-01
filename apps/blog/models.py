@@ -32,7 +32,7 @@ class Tag(models.Model):
 class Post(models.Model):
     category = models.ForeignKey(verbose_name="Категория", to='Category', on_delete=models.CASCADE)
     title = models.CharField(verbose_name="Заголовок", max_length=255)
-    description = models.TextField(verbose_name="Описание")
+    description = models.TextField(verbose_name="Описание", blank=True)
     text = models.TextField(verbose_name="Текст")
     slug = models.SlugField(help_text="Строка используемая для формирования url адреса на пост")
     tags = models.ManyToManyField(verbose_name="Теги", to='Tag', blank=True)
