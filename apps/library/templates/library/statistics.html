@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load library_template_tags %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'library:book_list' %}">Все книги</a></li>
+    <li><span>Информация о книгах</span></li>
+{% endblock %}
+
+{% block content %}
+    <div uk-grid>
+        <div class="uk-width-expand@m">
+            <div class="uk-card uk-card-default">
+                <div class="uk-card-header">
+                    <div class="uk-grid-small uk-flex-middle" uk-grid>
+                        <div class="uk-width-expand">
+                            <h3 class="uk-card-title uk-margin-remove-bottom">Информация о книгах</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <canvas id="size" width="600" height="700"></canvas>
+                    <canvas id="page_count" width="600" height="700"></canvas>
+
+                    <script>
+                        const options = {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        };
+                        new Chart(document.getElementById('size').getContext('2d'), {
+                            type: 'horizontalBar',
+                            data: {
+                                labels: {{ size_labels | safe }},
+                                datasets: [{
+                                    label: 'Размеры файлов в мб',
+                                    data: {{ size_values }},
+                                    backgroundColor: '#e74c3c',
+                                }]
+                            },
+                            options: options,
+                        });
+                        new Chart(document.getElementById('page_count').getContext('2d'), {
+                            type: 'horizontalBar',
+                            data: {
+                                labels: {{ page_count_labels | safe }},
+                                datasets: [{
+                                    label: 'Количество страниц',
+                                    data: {{ page_count_values }},
+                                    backgroundColor: '#3498db',
+                                }]
+                            },
+                            options: options,
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-3@m">
+            {% include_library_main_sidebar %}
+        </div>
+    </div>
+{% endblock %}

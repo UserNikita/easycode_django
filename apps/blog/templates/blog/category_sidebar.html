@@ -1,0 +1,38 @@
+<div class="uk-card uk-card-default uk-margin">
+    <div class="uk-card-header">
+        <div uk-grid>
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">Категории</h3>
+            </div>
+            {#            <div class="uk-width-auto">#}
+            {#                <button class="uk-button uk-button-text" type="button">Menu</button>#}
+            {#                <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">#}
+            {#                    <ul class="uk-nav uk-dropdown-nav">#}
+            {#                        <li><a href="{{ post.get_absolute_url }}">Просмотреть</a></li>#}
+            {#                        <li><a href="{% url 'blog:post_edit' post.id %}">Редактировать</a></li>#}
+            {#                        <li><a href="#">Удалить</a></li>#}
+            {#                    </ul>#}
+            {#                </div>#}
+            {#            </div>#}
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <ul>
+            <li><a href="{% url 'blog:post_list' %}">Все посты</a></li>
+            {% for category in categories %}
+                <li>
+                    <a href="{{ category.get_absolute_url }}">{{ category }}</a>
+                    <span class="uk-text-meta">{{ category.post_set.count }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="uk-card-footer">
+        <div uk-grid>
+            <div class="uk-width-expand">
+                <a href="{% url 'blog:post_add' %}" class="uk-button uk-button-default">Создать пост</a>
+            </div>
+        </div>
+    </div>
+</div>
+

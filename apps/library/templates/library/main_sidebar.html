@@ -1,0 +1,45 @@
+<div class="uk-card uk-card-default uk-margin">
+    <div class="uk-card-header">
+        <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">Главное</h3>
+            </div>
+            <div class="uk-width-auto">
+                <a uk-icon="more-vertical"></a>
+                <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
+                    <ul class="uk-nav uk-dropdown-nav uk-iconnav uk-iconnav-vertical">
+                        <li>
+                            <a href="{% url 'library:statistics' %}">
+                                <span uk-icon="file-text" class="uk-margin-small-right"></span>
+                                Просмотреть статистику
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'library:book_create' %}">
+                                <span uk-icon="file-pdf" class="uk-margin-small-right"></span>
+                                Добавить книгу
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="uk-card-body">
+        <ul class="uk-list">
+            <li>
+                <a href="{% url 'library:book_list' %}">Все книги</a>
+                <span class="uk-text-meta">{{ books_count }}</span>
+            </li>
+            {% for tag in tags %}
+                <li>
+                    <span class="uk-icon" uk-icon="hashtag"></span>
+                    <a href="{% url 'library:tag_book_list' tag.id %}">
+                        <span class="tag {{ tag.color }} uk-text-small">{{ tag }}</span>
+                    </a>
+                    <span class="uk-text-meta">{{ tag.book_set.count }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

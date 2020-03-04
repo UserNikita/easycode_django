@@ -1,0 +1,6 @@
+-r common.txt
+
+psycopg2==2.7.5
+gunicorn==19.9.0
+django-extensions==2.1.4
+pygraphviz==1.5

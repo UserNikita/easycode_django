@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'blog:post_list' %}">Все посты</a></li>
+    <li><a href="{{ post.category.get_absolute_url }}">{{ post.category }}</a></li>
+    <li><span>{{ post.title }}</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default uk-width-2-3@m">
+        <div class="uk-card-header">
+            <div class="uk-grid-small uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        {{ post.title }}
+                        {% if post.draft %}
+                            (Draft)
+                        {% endif %}
+                    </h3>
+                    <p class="uk-text-meta uk-margin-remove-top">
+                        <time datetime="2016-04-01T19:00">{{ post.create_date }}</time>
+                    </p>
+                </div>
+                <div class="uk-width-auto">
+                    <a uk-icon="more-vertical"></a>
+                    <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
+                        <ul class="uk-nav uk-dropdown-nav uk-iconnav uk-iconnav-vertical">
+                            <li>
+                                <a href="{% url 'blog:post_edit' post.id %}">
+                                    <span uk-icon="file-edit" class="uk-margin-small-right"></span>
+                                    Редактировать
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'blog:post_delete' post.id %}">
+                                    <span uk-icon="trash" class="uk-margin-small-right"></span>
+                                    Удалить
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            {{ post.text|safe }}
+        </div>
+        <div class="uk-card-footer">
+            {% for like in post.likes.all %}
+                <img class="small-avatar uk-border-circle" src="{{ like.user.profile.get_photo_url }}">
+            {% endfor %}
+        </div>
+    </div>
+
+    <ul class="uk-comment-list uk-width-2-3@m uk-padding-small">
+        {% for comment in post.comments.all %}
+            <li id="comment-{{ comment.id }}">
+                <article class="uk-comment uk-visible-toggle">
+                    <header class="uk-comment-header uk-position-relative">
+                        <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                            <div class="uk-width-auto">
+                                <img class="uk-comment-avatar uk-border-circle medium-avatar"
+                                     src="{{ comment.author.profile.get_photo_url }}"
+                                     width="80" height="80" alt="">
+                            </div>
+                            <div class="uk-width-expand">
+                                <h4 class="uk-comment-title uk-margin-remove">
+                                    <a class="uk-link-reset" href="#">{{ comment.author }}</a>
+                                </h4>
+                                <p class="uk-comment-meta uk-margin-remove-top">
+                                    <a class="uk-link-reset" href="#">{{ comment.creation_date }}</a>
+                                </p>
+                            </div>
+                        </div>
+                        {% if comment.author == request.user or request.user.is_superuser %}
+                            <div class="uk-position-top-right uk-position-small uk-hidden-hover">
+                                <form method="post" action="{% url 'blog:comment_delete' comment.id %}">
+                                    {% csrf_token %}
+                                    <button class="uk-link-muted uk-button uk-button-text">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </header>
+                    <div class="uk-comment-body">
+                        {{ comment.text }}
+                    </div>
+                </article>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if not request.user.is_anonymous %}
+        <form method="post" class="uk-width-2-3@m">
+            {% csrf_token %}
+            <div class="uk-margin">
+                {{ form.text }}
+            </div>
+            <button type="submit" class="uk-button uk-button-primary">
+                Отправить
+            </button>
+        </form>
+    {% endif %}
+{% endblock %}

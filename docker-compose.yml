@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    command: bash run.sh
+    volumes:
+      - .:/easycode
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.env.dev_docker
+    depends_on:
+      - db
