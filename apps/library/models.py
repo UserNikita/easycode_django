@@ -44,7 +44,7 @@ class Book(models.Model):
     description = models.TextField(verbose_name="Описание", blank=True)
     cover = models.ImageField(verbose_name="Обложка", blank=True, upload_to='library/covers')
     cover_thumbnail = models.ImageField(verbose_name="Превью", blank=True, upload_to='library/thumbnails')
-    authors = models.ManyToManyField(verbose_name="Авторы", to='Author')
+    authors = models.ManyToManyField(verbose_name="Авторы", to='Author', blank=True)
     publishers = models.ManyToManyField(verbose_name="Издательства", to='Publisher')
     year = models.PositiveIntegerField(verbose_name="Год издания")
     tags = models.ManyToManyField(verbose_name="Теги", to='Tag', blank=True)
