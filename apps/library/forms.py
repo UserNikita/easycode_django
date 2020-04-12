@@ -5,6 +5,19 @@ from .models import Book, Author, Publisher, Tag
 
 
 class BookForm(forms.ModelForm):
+    authors_list = forms.CharField(label="Список авторов", help_text="Введите авторов через запятую", required=False,
+                                   widget=forms.TextInput(attrs={'class': 'uk-input uk-form-width-large'}))
+
+    def save(self, commit=True):
+        book = super().save(commit=commit)
+        # Добавление авторов перечисленных в текстовом поле через запятую
+        authors_list = self.cleaned_data.get('authors_list', '').split(',')
+        authors_list = filter(None, [author.strip() for author in authors_list])
+        for author_fullname in authors_list:
+            author = Author.objects.get_or_create(full_name=author_fullname)[0]
+            book.authors.add(author)
+        return book
+
     class Meta:
         model = Book
         fields = '__all__'

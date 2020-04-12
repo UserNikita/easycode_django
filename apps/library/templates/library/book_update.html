@@ -22,108 +22,25 @@
         <div class="uk-card-body">
             <form class="uk-form-horizontal" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.errors }}
-                <div class="uk-margin">
-                    <label for="{{ form.cover.id_for_label }}" class="uk-form-label">
-                        {{ form.cover.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.cover }}
-                        {{ form.cover.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.title.id_for_label }}" class="uk-form-label">
-                        {{ form.title.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.title }}
-                        {{ form.title.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.description.id_for_label }}" class="uk-form-label">
-                        {{ form.description.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.description }}
-                        {{ form.description.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.authors.id_for_label }}" class="uk-form-label">
-                        {{ form.authors.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.authors }}
-                        {{ form.authors.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.publishers.id_for_label }}" class="uk-form-label">
-                        {{ form.publishers.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.publishers }}
-                        {{ form.publishers.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.year.id_for_label }}" class="uk-form-label">
-                        {{ form.year.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.year }}
-                        {{ form.year.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.tags.id_for_label }}" class="uk-form-label">
-                        {{ form.tags.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.tags }}
-                        {{ form.tags.errors }}
-                    </div>
-                </div>
-                <div class="uk-margin">
-                    <label for="{{ form.page_count.id_for_label }}" class="uk-form-label">
-                        {{ form.page_count.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.page_count }}
-                        {{ form.page_count.errors }}
-                    </div>
-                </div>
 
+                {% if form.non_field_errors %}
+                    <div class="uk-text-danger">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
 
-                 <div class="uk-margin">
-                    <label for="{{ form.url.id_for_label }}" class="uk-form-label">
-                        {{ form.url.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.url }}
-                        {{ form.url.errors }}
-                    </div>
-                </div>
-                 <div class="uk-margin">
-                    <label for="{{ form.size.id_for_label }}" class="uk-form-label">
-                        {{ form.size.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.size }}
-                        {{ form.size.errors }}
-                    </div>
-                </div>
-                 <div class="uk-margin">
-                    <label for="{{ form.format.id_for_label }}" class="uk-form-label">
-                        {{ form.format.label }}
-                    </label>
-                    <div class="uk-form-controls">
-                        {{ form.format }}
-                        {{ form.format.errors }}
-                    </div>
-                </div>
+                {% include 'library/form_field.html' with field=form.cover %}
+                {% include 'library/form_field.html' with field=form.title %}
+                {% include 'library/form_field.html' with field=form.description %}
+                {% include 'library/form_field.html' with field=form.authors %}
+                {% include 'library/form_field.html' with field=form.authors_list %}
+                {% include 'library/form_field.html' with field=form.publishers %}
+                {% include 'library/form_field.html' with field=form.year %}
+                {% include 'library/form_field.html' with field=form.tags %}
+                {% include 'library/form_field.html' with field=form.page_count %}
+                {% include 'library/form_field.html' with field=form.url %}
+                {% include 'library/form_field.html' with field=form.size %}
+                {% include 'library/form_field.html' with field=form.format %}
 
                 <div class="uk-margin">
                     <button type="submit" class="uk-button uk-button-primary">
