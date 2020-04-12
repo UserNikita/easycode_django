@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load quiz_tags %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'quiz:quiz_list' %}">Все тесты</a></li>
+    <li><span>{{ quiz.name }}</span></li>
+    <li><span>Результаты</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default uk-margin">
+        <div class="uk-card-header">
+            <div uk-grid>
+                <div class="uk-width-expand">
+                    <h3 class="uk-card-title uk-margin-remove-bottom">
+                        Результаты: {{ quiz.name }}
+                        {% if quiz.draft %}
+                            <div class="uk-label uk-label-warning">Draft</div>
+                        {% endif %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <div uk-grid>
+                <div>
+                    <div>Ваша статистика</div>
+                    <canvas id="personal-stat" width="300" height="300" class="chartjs-render-monitor"></canvas>
+                </div>
+                <div>
+                    <div>Общая статистика</div>
+                    <canvas id="total-stat" width="300" height="300" class="chartjs-render-monitor"></canvas>
+                </div>
+            </div>
+
+            <table class="uk-table uk-table-divider">
+                <thead>
+                <tr>
+                    <th class="uk-table-shrink">#</th>
+                    <th>Вопрос</th>
+                    <th class="uk-table-shrink uk-text-nowrap">Ваш ответ</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for question in quiz.question_set.all %}
+                    <tr>
+                        <th>{{ question.id }}</th>
+                        <td>{{ question.text }}</td>
+                        <td class="uk-text-center">
+                            {% get_answer_status user question as status %}
+                            {{ status }}
+                            {% if status == question.RIGHT %}
+                                <span uk-icon="plus-circle" class="uk-text-success"></span>
+                            {% else %}
+                                <span uk-icon="minus-circle" class="uk-text-danger"></span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script>
+        let first = '#1e87f0';
+        let second = '#a8a8a8'; //'#32d296';
+
+        let personalStatConfig = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: {{ user_stat }},
+                    backgroundColor: [first, second],
+                    label: 'Dataset 1'
+                }],
+                labels: ['Правильные ответы', 'Неправильные ответы']
+            },
+            options: {
+                responsive: true
+            }
+        };
+
+        let totalStatConfig = {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: {{ total_stat }},
+                    backgroundColor: [first, second],
+                    label: 'Dataset 1'
+                }],
+                labels: ['Правильные ответы %', 'Неправильные ответы %']
+            },
+            options: {
+                responsive: true
+            }
+        };
+
+        window.onload = function () {
+            let personal_context = document.getElementById('personal-stat').getContext('2d');
+            window.myPie = new Chart(personal_context, personalStatConfig);
+            let total_context = document.getElementById('total-stat').getContext('2d');
+            window.myPie = new Chart(total_context, totalStatConfig);
+        };
+    </script>
+{% endblock %}

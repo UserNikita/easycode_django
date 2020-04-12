@@ -1,0 +1,13 @@
+{% load quiz_tags %}
+
+{% for question in quiz.question_set.all %}
+    {% get_answer_status user question as status %}
+    {% if question == current_question %}
+        <span class="uk-button uk-button-small uk-disabled uk-text-bolder {% if status == question.RIGHT %}uk-button-primary{% elif status == question.NOT_RIGHT %}uk-button-danger{% else %}uk-button-default uk-background-muted{% endif %}">{{ forloop.counter }}</span>
+    {% else %}
+        <a href="{{ question.get_absolute_url }}"
+           class="uk-button uk-button-small {% if status == question.RIGHT %}uk-button-primary{% elif status == question.NOT_RIGHT %}uk-button-danger{% else %}uk-button-default{% endif %}">
+            {{ forloop.counter }}
+        </a>
+    {% endif %}
+{% endfor %}

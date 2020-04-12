@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load quiz_tags %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'quiz:quiz_list' %}">Все тесты</a></li>
+    <li><span>{{ question.quiz }}</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default">
+        <div class="uk-card-body">
+            {% question_nav user question.quiz question %}
+        </div>
+    </div>
+
+    {% get_answer_status user question as question_status %}
+    {% if question_status != question.NOT_ANSWERED %}
+        <div class="uk-card uk-card-default uk-margin">
+            <div class="uk-card-body">
+                <h3>{{ question.text }}</h3>
+                <ul class="uk-list uk-list-bullet">
+                    {% for answer in question.answer_set.all %}
+                        <li>
+                            <span {% if answer.right %}class="uk-text-success"{% endif %}>
+                                {{ answer.text }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <p>
+                    Вы ответили
+                    <span class="uk-text-italic">
+                        {% if question_status == question.RIGHT %}
+                            правильно
+                        {% else %}
+                            неправильно
+                        {% endif %}
+                    </span>
+                </p>
+                <ul class="uk-list uk-list-bullet">
+                    {% for user_answer in user_answers %}
+                        <li>
+                            <span class="{% if user_answer.answer.right %}uk-text-success{% else %}uk-text-danger{% endif %}">
+                                {{ user_answer.answer.text }}
+                            </span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <div class="uk-card uk-card-default uk-margin">
+            <div class="uk-card-body">
+                <h3>{{ question.text }}</h3>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" class="uk-button uk-button-primary">Ответить</button>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

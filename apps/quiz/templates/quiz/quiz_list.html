@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load quiz_tags %}
+
+{% block breadcrumb %}
+    <li><span>Все тесты</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-grid-small" uk-grid uk-height-match="target: > div > .uk-card > .uk-card-body">
+        {% for quiz in quiz_list %}
+            <div class="uk-width-1-2@l">
+                <div class="uk-card uk-card-default uk-margin">
+                    <div class="uk-card-header">
+                        <div uk-grid>
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">
+                                    {{ quiz.name }}
+                                    {% if quiz.draft %}
+                                        <div class="uk-label uk-label-warning">Draft</div>
+                                    {% endif %}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <div>
+                            <span uk-icon="icon: question;"></span>
+                            Вопросов: {{ quiz.question_set.count }}
+                        </div>
+                        <div>
+                            <span uk-icon="icon: users;"></span>
+                            Прошли тест: {{ quiz.get_user_tested_count }}
+                        </div>
+                    </div>
+                    <div class="uk-card-footer">
+                        <div uk-grid>
+                            <div class="uk-width-expand uk-flex uk-flex-left uk-first-column">
+                                <a href="{{ quiz.get_absolute_url }}" class="uk-button uk-button-link">Информация</a>
+                            </div>
+                            <div class="uk-width-expand uk-flex uk-flex-right">
+                                {% get_start_quiz_url user quiz %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
