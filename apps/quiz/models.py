@@ -83,6 +83,7 @@ class Answer(models.Model):
     question = models.ForeignKey(verbose_name="Вопрос", to='Question', on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст ответа")
     right = models.BooleanField(verbose_name="Правильный ответ", default=False)
+    users = models.ManyToManyField(verbose_name="Пользователи", to='auth.User', through='UserAnswer', blank=True)
 
     def __str__(self):
         return self.text
