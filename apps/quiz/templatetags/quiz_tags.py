@@ -22,7 +22,7 @@ def question_nav(user, quiz, current_question):
     return context
 
 
-@register.simple_tag(name='get_start_quiz_url')
+@register.simple_tag()
 def get_quiz_start_url(user, quiz):
     """
     Шаблонный тег для получения ссылки на первый вопрос теста
