@@ -58,7 +58,8 @@ class QuestionDetailView(BaseFormView, DetailView):
     def get_success_url(self):
         current_question = self.get_object()
         next_question = current_question.quiz.get_next_question(user=self.request.user, question=current_question)
-        if next_question is not None:
+        if next_question:
             return next_question.get_absolute_url()
         else:
+            current_question.quiz.users_passed.add(self.request.user)
             return reverse('quiz:quiz_detail', args=(current_question.quiz.id,))

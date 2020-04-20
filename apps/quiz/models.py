@@ -5,6 +5,8 @@ from django.urls import reverse
 class Quiz(models.Model):
     name = models.CharField(verbose_name="Название теста", max_length=255)
 
+    users_passed = models.ManyToManyField(verbose_name="Пользователи прошедшие тест", to='auth.User', blank=True)
+
     def get_absolute_url(self):
         return reverse('quiz:quiz_detail', args=(self.id,))
 
