@@ -33,7 +33,6 @@ class LibraryTestCase(TestCase):
 
     @tag('list', 'anonymous')
     def test_view_book_list_by_anonymous(self):
-        """Проверка может ли анонимный пользователь видеть список книг"""
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.book.id, response.context_data['book_list'][0].id)
@@ -42,7 +41,6 @@ class LibraryTestCase(TestCase):
 
     @tag('list', 'user')
     def test_view_book_list_by_user(self):
-        """Проверка может ли авторизованный пользователь видеть список книг"""
         self.client.force_login(self.user)
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, 200)
@@ -52,10 +50,19 @@ class LibraryTestCase(TestCase):
 
     @tag('list', 'admin')
     def test_view_book_list_by_admin(self):
-        """Проверка может ли администратор видеть список книг"""
         self.client.force_login(self.user)
         response = self.client.get(self.list_url)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.book.id, response.context_data['book_list'][0].id)
         self.assertEqual(self.book.title, response.context_data['book_list'][0].title)
+        self.assertEqual(Book.objects.count(), len(response.context_data['book_list']))
+
+    def test_book_list_filtered_by_anonymous(self):
+        response = self.client.get(self.list_url, {'title': 'Book'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Book.objects.count(), len(response.context_data['book_list']))
+
+    def test_book_list_case_insensitive_filtered_by_anonymous(self):
+        response = self.client.get(self.list_url, {'title': 'book'})
+        self.assertEqual(response.status_code, 200)
         self.assertEqual(Book.objects.count(), len(response.context_data['book_list']))
