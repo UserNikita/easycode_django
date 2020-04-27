@@ -5,6 +5,8 @@ from django.urls import reverse
 class Quiz(models.Model):
     name = models.CharField(verbose_name="Название теста", max_length=255)
 
+    users_passed = models.ManyToManyField(verbose_name="Пользователи прошедшие тест", to='auth.User', blank=True)
+
     def get_absolute_url(self):
         return reverse('quiz:quiz_detail', args=(self.id,))
 
@@ -81,6 +83,7 @@ class Answer(models.Model):
     question = models.ForeignKey(verbose_name="Вопрос", to='Question', on_delete=models.CASCADE)
     text = models.TextField(verbose_name="Текст ответа")
     right = models.BooleanField(verbose_name="Правильный ответ", default=False)
+    users = models.ManyToManyField(verbose_name="Пользователи", to='auth.User', through='UserAnswer', blank=True)
 
     def __str__(self):
         return self.text

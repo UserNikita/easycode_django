@@ -3,7 +3,7 @@ from apps.quiz.models import Quiz, Question, Answer, UserAnswer
 
 
 class QuizAdmin(admin.ModelAdmin):
-    pass
+    filter_horizontal = ('users_passed',)
 
 
 class AnswerInline(admin.TabularInline):
