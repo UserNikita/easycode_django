@@ -22,6 +22,10 @@ body {
     text-decoration: none;
 }
 
+#cover {
+    height:160px
+}
+
 /* Фоновые цвета */
 .bgm-white {
     background-color: #ffffff;

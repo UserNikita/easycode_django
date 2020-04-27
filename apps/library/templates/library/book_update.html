@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load library_template_tags %}
 
 {% block breadcrumb %}
@@ -29,6 +30,16 @@
                     </div>
                 {% endif %}
 
+                <div class="uk-margin">
+                    <div class="uk-form-controls">
+                        {% if book %}
+                            <img id="cover" src="{{ book.get_cover_thumbnail_url }}" alt="cover">
+                        {% else %}
+                            <img id="cover" src="{% static 'img/missing_book_cover.jpg' %}" alt="cover">
+                        {% endif %}
+                    </div>
+                </div>
+
                 {% include 'library/form_field.html' with field=form.cover %}
                 {% include 'library/form_field.html' with field=form.title %}
                 {% include 'library/form_field.html' with field=form.description %}
@@ -50,4 +61,19 @@
             </form>
         </div>
     </div>
+    <script>
+        let defaultCover = document.getElementById('cover').src;
+        document.getElementsByName('cover')[0].addEventListener('change', function (event) {
+            if (event.target.files && event.target.files[0]) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('cover').src = e.target.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            } else {
+                let cover = document.getElementById('cover');
+                cover.src = defaultCover;
+            }
+        })
+    </script>
 {% endblock %}
