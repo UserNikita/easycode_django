@@ -6,7 +6,7 @@ install:
   - pip install -r requirements/common.txt
 # Команда для запуска тестов
 script:
-  - python manage.py test --settings=settings.env.test
+  - python manage.py test --settings=settings.env.test -v=2
 # Деплой на Heroku
 #deploy:
 #  provider: heroku
