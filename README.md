@@ -81,7 +81,7 @@
 
 1. Войти в контейнер
     ```bash
-    docker exec -ti easycode_web_1 bash
+    docker exec -ti web bash
     ```
 
 2. Выполнить команду
