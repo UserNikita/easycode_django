@@ -1,4 +1,5 @@
 from django import template
+from django.db.models import Count
 from apps.library.models import Book, Tag
 from apps.library.forms import BookFilterForm
 
@@ -8,7 +9,7 @@ register = template.Library()
 @register.inclusion_tag(filename='library/main_sidebar.html')
 def include_library_main_sidebar():
     context = {
-        'tags': Tag.objects.all(),
+        'tags': Tag.objects.annotate(Count('book')).order_by('-book__count'),
         'books_count': Book.objects.count(),
     }
     return context

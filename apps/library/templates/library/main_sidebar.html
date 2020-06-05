@@ -37,7 +37,7 @@
                     <a href="{% url 'library:tag_book_list' tag.id %}">
                         <span class="tag {{ tag.color }} uk-text-small">{{ tag }}</span>
                     </a>
-                    <span class="uk-text-meta">{{ tag.book_set.count }}</span>
+                    <span class="uk-text-meta">{{ tag.book__count }}</span>
                 </li>
             {% endfor %}
         </ul>

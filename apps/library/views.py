@@ -2,7 +2,7 @@ from django.views.generic import ListView, DetailView, UpdateView, CreateView, D
 from django.views.generic.edit import FormMixin, ProcessFormView
 from django.contrib.auth.mixins import UserPassesTestMixin, PermissionRequiredMixin
 from django_filters.views import FilterMixin
-from django.db.models import Max, Min, Avg, Sum
+from django.db.models import Max, Min, Avg, Sum, Count
 
 from apps.personal_area.forms import CommentForm
 from apps.personal_area.models import Comment
@@ -19,6 +19,7 @@ class BookListView(FilterMixin, ListView):
 
     def get_queryset(self):
         qs = super(BookListView, self).get_queryset().filter(draft=False)
+        qs = qs.annotate(Count('likes'), Count('comments'))
         return qs
 
     def get_context_data(self, **kwargs):
