@@ -11,7 +11,7 @@ from .forms import *
 class PostListView(ListView):
     template_name = 'blog/post_list.html'
     model = Post
-    paginate_by = 5
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = super(PostListView, self).get_queryset()
