@@ -37,9 +37,11 @@
                             <div class="uk-width-expand uk-flex uk-flex-left uk-first-column">
                                 <a href="{{ quiz.get_absolute_url }}" class="uk-button uk-button-link">Информация</a>
                             </div>
-                            <div class="uk-width-expand uk-flex uk-flex-right">
-                                {% get_quiz_start_url user quiz %}
-                            </div>
+                            {% if not user.is_anonymous %}
+                                <div class="uk-width-expand uk-flex uk-flex-right">
+                                    {% get_quiz_start_url user quiz %}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

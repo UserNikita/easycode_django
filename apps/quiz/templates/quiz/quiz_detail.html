@@ -23,42 +23,46 @@
         </div>
         <div class="uk-card-body">
             <div uk-grid>
-                <div>
-                    <div>Ваша статистика</div>
-                    <canvas id="personal-stat" width="300" height="300" class="chartjs-render-monitor"></canvas>
-                </div>
+                {% if not user.is_anonymous %}
+                    <div>
+                        <div>Ваша статистика</div>
+                        <canvas id="personal-stat" width="300" height="300" class="chartjs-render-monitor"></canvas>
+                    </div>
+                {% endif %}
                 <div>
                     <div>Общая статистика</div>
                     <canvas id="total-stat" width="300" height="300" class="chartjs-render-monitor"></canvas>
                 </div>
             </div>
 
-            <table class="uk-table uk-table-divider">
-                <thead>
-                <tr>
-                    <th class="uk-table-shrink">#</th>
-                    <th>Вопрос</th>
-                    <th class="uk-table-shrink uk-text-nowrap">Ваш ответ</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for question in quiz.question_set.all %}
+            {% if not user.is_anonymous %}
+                <table class="uk-table uk-table-divider">
+                    <thead>
                     <tr>
-                        <th>{{ question.id }}</th>
-                        <td>{{ question.text }}</td>
-                        <td class="uk-text-center">
-                            {% get_answer_status user question as status %}
-                            {{ status }}
-                            {% if status == question.RIGHT %}
-                                <span uk-icon="plus-circle" class="uk-text-success"></span>
-                            {% else %}
-                                <span uk-icon="minus-circle" class="uk-text-danger"></span>
-                            {% endif %}
-                        </td>
+                        <th class="uk-table-shrink">#</th>
+                        <th>Вопрос</th>
+                        <th class="uk-table-shrink uk-text-nowrap">Ваш ответ</th>
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {% for question in quiz.question_set.all %}
+                        <tr>
+                            <th>{{ question.id }}</th>
+                            <td>{{ question.text }}</td>
+                            <td class="uk-text-center">
+                                {% get_answer_status user question as status %}
+                                {{ status }}
+                                {% if status == question.RIGHT %}
+                                    <span uk-icon="plus-circle" class="uk-text-success"></span>
+                                {% else %}
+                                    <span uk-icon="minus-circle" class="uk-text-danger"></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
 
         </div>
     </div>
@@ -67,20 +71,22 @@
         let first = '#1e87f0';
         let second = '#a8a8a8'; //'#32d296';
 
-        let personalStatConfig = {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: {{ user_stat }},
-                    backgroundColor: [first, second],
-                    label: 'Dataset 1'
-                }],
-                labels: ['Правильные ответы', 'Неправильные ответы']
-            },
-            options: {
-                responsive: true
-            }
-        };
+        {% if not user.is_anonymous %}
+            let personalStatConfig = {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: {{ user_stat }},
+                        backgroundColor: [first, second],
+                        label: 'Dataset 1'
+                    }],
+                    labels: ['Правильные ответы', 'Неправильные ответы']
+                },
+                options: {
+                    responsive: true
+                }
+            };
+        {% endif %}
 
         let totalStatConfig = {
             type: 'pie',
@@ -98,8 +104,10 @@
         };
 
         window.onload = function () {
-            let personal_context = document.getElementById('personal-stat').getContext('2d');
-            window.myPie = new Chart(personal_context, personalStatConfig);
+            {% if not user.is_anonymous %}
+                let personal_context = document.getElementById('personal-stat').getContext('2d');
+                window.myPie = new Chart(personal_context, personalStatConfig);
+            {% endif %}
             let total_context = document.getElementById('total-stat').getContext('2d');
             window.myPie = new Chart(total_context, totalStatConfig);
         };

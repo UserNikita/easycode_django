@@ -18,13 +18,14 @@ class QuizDetailView(DetailView):
         # TODO: Рефакторить
         context = super().get_context_data(**kwargs)
         quiz = self.get_object()
-        yes, no = 0, 0
-        for q in quiz.question_set.all():
-            if q.get_answer_status(self.request.user) == q.RIGHT:
-                yes += 1
-            else:
-                no += 1
-        context['user_stat'] = '[%d, %d]' % (yes, no)
+        if not self.request.user.is_anonymous:
+            yes, no = 0, 0
+            for q in quiz.question_set.all():
+                if q.get_answer_status(self.request.user) == q.RIGHT:
+                    yes += 1
+                else:
+                    no += 1
+            context['user_stat'] = '[%d, %d]' % (yes, no)
 
         questions = quiz.question_set.all()
         if questions.exists():
