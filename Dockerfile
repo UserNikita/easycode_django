@@ -1,5 +1,6 @@
-FROM python:3.7
-ADD requirements/ /easycode/requirements/
-WORKDIR /easycode
-RUN apt-get update -y && apt-get install graphviz -y
+FROM python:3.10
+WORKDIR /app
+ADD requirements /app/requirements/
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install graphviz -y
 RUN pip install -r requirements/dev_docker.txt

@@ -1,17 +1,20 @@
-version: '3'
-
 services:
   db:
-    container_name: db
-    image: postgres
+    image: mysql:5.7
     environment:
-      - POSTGRES_PASSWORD=postgres
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_TCP_PORT=3306
+      - MYSQL_DATABASE=db
+      # - MYSQL_USER=user  # Не работает для 5.7
+      # - MYSQL_PASSWORD=pass  # Не работает для 5.7
+    ports:
+      - "3306:3306"
+
   web:
-    container_name: web
     build: .
     command: bash run.sh
     volumes:
-      - .:/easycode
+      - .:/app
     ports:
       - "8000:8000"
     environment:

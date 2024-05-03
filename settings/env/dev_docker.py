@@ -24,12 +24,11 @@ MIDDLEWARE += [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db',
+        'USER': 'root',
+        'PASSWORD': 'pass',
         'HOST': 'db',
-        'PORT': 5432,
+        'PORT': 3306,
     }
 }
-
