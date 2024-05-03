@@ -1,16 +1,15 @@
-from django.conf.urls import url
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^', include(('apps.blog.urls', 'blog'), namespace='blog')),
-    url(r'^', include(('apps.personal_area.urls', 'personal_area'), namespace='personal_area')),
-    url(r'^library/', include(('apps.library.urls', 'library'), namespace='library')),
-    url(r'^summernote/', include('django_summernote.urls')),
-    url(r'^admin/', admin.site.urls),
+    re_path(r'^', include(('apps.blog.urls', 'blog'), namespace='blog')),
+    re_path(r'^', include(('apps.personal_area.urls', 'personal_area'), namespace='personal_area')),
+    re_path(r'^library/', include(('apps.library.urls', 'library'), namespace='library')),
+    re_path(r'^summernote/', include('django_summernote.urls')),
+    re_path(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
