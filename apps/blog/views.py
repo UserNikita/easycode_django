@@ -20,7 +20,7 @@ class PostListView(ListView):
         if self.request.user.is_superuser:
             return queryset
         if self.request.user.is_anonymous:
-            return queryset.exclude(draft=True)        
+            return queryset.exclude(draft=True)
         return queryset.filter(Q(draft=False) | Q(author=self.request.user))
 
 
