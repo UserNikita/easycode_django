@@ -8,6 +8,9 @@
 
 {% block content %}
     <div class="uk-child-width-expand" uk-grid>
+        <div class="uk-width-1-3@m">
+            {% include_category_sidebar %}
+        </div>
         <div>
             {% for post in post_list %}
                 <div class="uk-card uk-card-default uk-margin">
@@ -87,9 +90,6 @@
             {% block pagination %}
                 {% include 'blog/pagination.html' %}
             {% endblock %}
-        </div>
-        <div class="uk-width-1-3@m">
-            {% include_category_sidebar %}
         </div>
     </div>
 {% endblock %}
