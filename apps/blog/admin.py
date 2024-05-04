@@ -21,6 +21,7 @@ class LikeInline(GenericStackedInline):
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'category',)
     list_filter = ('category', 'author', 'create_date', 'change_date',)
+    search_fields = ('title', 'description', 'text',)
     filter_horizontal = ('tags',)
     readonly_fields = ('create_date', 'change_date',)
     form = PostFormAdmin
