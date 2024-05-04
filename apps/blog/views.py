@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic.edit import FormMixin, ProcessFormView
 from django.contrib.auth.mixins import UserPassesTestMixin, PermissionRequiredMixin
+from django.db.models import Q
+
 from apps.personal_area.forms import CommentForm
 from apps.personal_area.models import Comment
 from .models import *
@@ -15,9 +17,11 @@ class PostListView(ListView):
 
     def get_queryset(self):
         queryset = super(PostListView, self).get_queryset()
-        if not self.request.user.is_superuser:
-            queryset = queryset.filter(draft=False)
-        return queryset
+        if self.request.user.is_superuser:
+            return queryset
+        if self.request.user.is_anonymous:
+            return queryset.exclude(draft=True)        
+        return queryset.filter(Q(draft=False) | Q(author=self.request.user))
 
 
 class CategoryPostListView(PostListView):
@@ -42,10 +46,12 @@ class PostDetailView(DetailView, UserPassesTestMixin, ProcessFormView, FormMixin
     form_class = CommentForm
 
     def test_func(self):
-        is_draft = self.get_object().draft
-        is_superuser = self.request.user.is_superuser
-        condition = not is_draft or (is_draft and is_superuser)
-        return condition
+        if self.request.user.is_superuser:
+            return True
+        obj = self.get_object()
+        if obj.draft and obj.author == self.request.user:
+            return True
+        return not obj.draft
 
     def get_success_url(self):
         return self.get_object().get_absolute_url()
