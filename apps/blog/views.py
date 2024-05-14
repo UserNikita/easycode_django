@@ -95,6 +95,20 @@ class PostDeleteView(PermissionRequiredMixin, DeleteView):
         return reverse('blog:post_list')
 
 
+class CategoryCreateView(PermissionRequiredMixin, CreateView):
+    template_name = 'blog/category_create.html'
+    model = Category
+    form_class = CategoryForm
+    permission_required = ['blog.create_category']
+
+
+class CategoryUpdateView(PermissionRequiredMixin, UpdateView):
+    template_name = 'blog/category_update.html'
+    model = Category
+    form_class = CategoryForm
+    permission_required = ['blog.change_category']
+
+
 class CommentDeleteView(UserPassesTestMixin, DeleteView):
     model = Comment
 

@@ -33,6 +33,16 @@ urlpatterns = [
         name='post_delete'
     ),
     re_path(
+        route=r'^category/add/$',
+        view=CategoryCreateView.as_view(),
+        name='category_add'
+    ),
+    re_path(
+        route=r'^category/(?P<pk>\d+)/edit/$',
+        view=CategoryUpdateView.as_view(),
+        name='category_edit'
+    ),
+    re_path(
         route=r'^comment/(?P<pk>\d+)/delete/$',
         view=CommentDeleteView.as_view(),
         name='comment_delete'

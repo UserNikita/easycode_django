@@ -1,6 +1,6 @@
 from django import forms
 from django_summernote.widgets import SummernoteWidget
-from .models import Post
+from .models import Post, Category
 
 
 class PostFormAdmin(forms.ModelForm):
@@ -24,4 +24,13 @@ class PostForm(forms.ModelForm):
             'text': SummernoteWidget(),
             'tags': forms.SelectMultiple(attrs={'class': 'uk-select uk-form-width-large'}),
             'draft': forms.CheckboxInput(attrs={'class': 'uk-checkbox'}),
+        }
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ('title',)
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'uk-input uk-form-width-large'}),
         }
