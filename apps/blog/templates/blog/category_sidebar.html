@@ -9,6 +9,12 @@
                 <div uk-dropdown="mode: click; pos: bottom-right; duration: 100">
                     <ul class="uk-nav uk-dropdown-nav uk-iconnav uk-iconnav-vertical">
                         <li>
+                            <a href="{% url 'blog:category_list' %}">
+                                <span uk-icon="list" class="uk-margin-small-right"></span>
+                                Дерево категорий
+                            </a>
+                        </li>
+                        <li>
                             <a href="{% url 'blog:post_add' %}">
                                 <span uk-icon="plus" class="uk-margin-small-right"></span>
                                 Создать пост
