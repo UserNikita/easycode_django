@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'blog:post_list' %}">Все посты</a></li>
+    <li><span>Дерево категорий</span></li>
+{% endblock %}
+
+{% block content %}
+    <div class="uk-card uk-card-default uk-width-2-3@m">
+        <div class="uk-card-header">
+            <div class="uk-width-expand">
+                <h3 class="uk-card-title uk-margin-remove-bottom">
+                    Список категорий
+                </h3>
+            </div>
+        </div>
+        <div class="uk-card-body">
+            <ul class="uk-list uk-list-primary">
+                {% for category in category_list %}
+                    <li>
+                        <span uk-icon="icon: folder"></span>
+                        <a class="uk-link-heading" href="{{ category.get_absolute_url }}">
+                            {{category}}
+                        </a>
+                        <ul class="uk-list uk-list-primary uk-margin-left">
+                            {% for post in category.post_set.all %}
+                                {% if request.user.is_superuser or not post.draft  %}
+                                    <li>
+                                        <span uk-icon="icon: file-text"></span>
+                                        <a class="uk-link-heading" href="{{ post.get_absolute_url }}">
+                                            {{post}}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="uk-card-footer">
+        </div>
+    </div>
+{% endblock %}

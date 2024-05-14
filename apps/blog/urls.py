@@ -32,6 +32,11 @@ urlpatterns = [
         view=PostDeleteView.as_view(),
         name='post_delete'
     ),
+     re_path(
+        route=r'^categories/$',
+        view=CategoryListView.as_view(),
+        name='category_list'
+    ),
     re_path(
         route=r'^category/add/$',
         view=CategoryCreateView.as_view(),
