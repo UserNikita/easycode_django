@@ -23,18 +23,21 @@
                         <a class="uk-link-heading" href="{{ category.get_absolute_url }}">
                             {{category}}
                         </a>
-                        <ul class="uk-list uk-list-primary uk-margin-left">
+                        <table class="uk-table uk-table-divider uk-table-small uk-table-hover uk-margin-left">
                             {% for post in category.post_set.all %}
                                 {% if request.user.is_superuser or not post.draft  %}
-                                    <li>
-                                        <span uk-icon="icon: file-text"></span>
-                                        <a class="uk-link-heading" href="{{ post.get_absolute_url }}">
-                                            {{post}}
-                                        </a>
-                                    </li>
+                                    <tr>
+                                        <td>
+                                            <span uk-icon="icon: file-text"></span>
+                                            <a class="uk-link-heading" href="{{ post.get_absolute_url }}">
+                                                {{post}}
+                                            </a>
+                                        </td>
+                                        <td>{{post.create_date | date:"Y-m-d H:i"}}</td>
+                                    </tr>
                                 {% endif %}
                             {% endfor %}
-                        </ul>
+                        </table>
                     </li>
                 {% endfor %}
             </ul>
