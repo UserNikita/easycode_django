@@ -1,4 +1,4 @@
-Django==4.1
+Django==4.1.13
 django-filter==23.5
 django-summernote==0.8.20.0
 olefile==0.47
