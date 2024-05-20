@@ -6,6 +6,7 @@ from django.db.models import Q
 
 from apps.personal_area.forms import CommentForm
 from apps.personal_area.models import Comment
+from apps.blog.filterset import PostFilterSet
 from .models import *
 from .forms import *
 
@@ -14,6 +15,7 @@ class PostListView(ListView):
     template_name = 'blog/post_list.html'
     model = Post
     paginate_by = 10
+    filterset_class = PostFilterSet
 
     def get_queryset(self):
         queryset = super(PostListView, self).get_queryset()

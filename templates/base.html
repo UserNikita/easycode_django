@@ -69,16 +69,28 @@
     <nav class="uk-navbar-container uk-navbar-transparent">
         <div class="uk-container uk-container-expand">
             <div uk-navbar>
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active">
-                        <a href="#sidebar_menu" uk-toggle>
-                            <span uk-icon="menu"></span>
-                        </a>
-                    </li>
-                    <li class="uk-active">
-                        <a href="{% url 'blog:post_list' %}">Easy Code</a>
-                    </li>
-                </ul>
+                <div class="uk-navbar-left">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active">
+                            <a href="#sidebar_menu" uk-toggle>
+                                <span uk-icon="menu"></span>
+                            </a>
+                        </li>
+                        <li class="uk-active">
+                            <a href="{% url 'blog:post_list' %}">Easy Code</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="uk-navbar-right">
+                    <div>
+                        <a class="uk-navbar-toggle" href uk-search-icon></a>
+                        <div class="uk-drop" uk-drop="mode: click; pos: left-center; offset: 0">
+                            <form class="uk-search uk-search-navbar" method="get" action="">
+                                <input name="search" class="uk-search-input" type="search" placeholder="Поиск" aria-label="Поиск" autofocus>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
