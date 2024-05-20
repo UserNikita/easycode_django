@@ -125,11 +125,3 @@ class CommentDeleteView(UserPassesTestMixin, DeleteView):
 class CategoryListView(ListView):
     template_name = 'blog/category_list.html'
     model = Category
-
-    def get_queryset(self):
-        queryset = super().get_queryset().prefetch_related("post_set")
-        if self.request.user.is_superuser:
-            return queryset
-        if self.request.user.is_anonymous:
-            return queryset.exclude(draft=True)
-        return queryset.filter(Q(draft=False) | Q(author=self.request.user))
