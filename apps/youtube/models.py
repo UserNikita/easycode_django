@@ -8,6 +8,7 @@ class Channel(models.Model):
     id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
     url = models.URLField(verbose_name="Url", unique=True)
     title = models.CharField(verbose_name="Название", max_length=255)
+    thumbnail_url = models.URLField(verbose_name="Ссылка на превью", blank=True)
 
     class Meta:
         verbose_name = "Канал"

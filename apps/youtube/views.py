@@ -1,5 +1,6 @@
-from django.views.generic import ListView, FormView,TemplateView
+from django.views.generic import ListView, CreateView
 from apps.youtube.models import Channel, Video
+from apps.youtube.forms import ChannelForm
 
 
 class ChannelsListView(ListView):
@@ -23,5 +24,6 @@ class VideosListView(ListView):
         return context
 
 
-class AddChannelFormView(TemplateView):
+class AddChannelFormView(CreateView):
     template_name = "youtube/add_channel.html"
+    form_class = ChannelForm
