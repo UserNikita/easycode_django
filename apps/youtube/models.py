@@ -19,6 +19,10 @@ class Channel(models.Model):
     def get_absolute_url(self):
         return reverse("youtube:videos-list", kwargs={"pk": self.pk})
 
+    def video_duration_sum(self):
+        duration = self.video_set.all().aggregate(total_duration=models.Sum("duration"))["total_duration"]
+        return str(timedelta(seconds=duration)) if duration else "Нет видео"
+
 
 class Playlist(models.Model):
     id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)

@@ -14,6 +14,7 @@
                 <th scope="col">Название</th>
                 <th scope="col">Ссылка</th>
                 <th scope="col">Количество видео</th>
+                <th scope="col">Общее время просмотра</th>
                 <th scope="col">Действия</th>
             </tr>
             </thead>
@@ -24,8 +25,9 @@
                     <td>{{ channel.title }}</td>
                     <td><a href="{{ channel.url }}">Youtube</a></td>
                     <td>{{ channel.video_set.count }}</td>
+                    <td>{{ channel.video_duration_sum }}</td>
                     <td>
-                        <a href="{{ channel.get_absolute_url }}">Подробнее</a>
+                        <a  class="btn btn-primary" href="{{ channel.get_absolute_url }}">Подробнее</a>
                     </td>
                 </tr>
             {% endfor %}
