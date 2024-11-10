@@ -12,17 +12,19 @@
     </div>
     <div class="row">
         {% for video in video_list %}
-            <div class="col-2">
-                <div class="card" style="width: 18rem;">
-                    <img src="{{ video.thumbnail_url }}" class="card-img-top" alt="...">
+            <div class="col-6">
+                <div class="card mb-1">
                     <div class="card-body">
-                        <h5 class="card-title">
-                            {{ video.title }}
-                        </h5>
-                        <p class="card-text">
-                            {{ video.title }}
-                        </p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <div class="row">
+                            <div class="col-auto">
+                                <img src="{{ video.thumbnail_url }}" alt="" height="100">
+                            </div>
+                            <div class="col">
+                                <div class="card-text">{{ video.title }}</div>
+                                <div>Дата публикации: {{ video.publish_date }}</div>
+                                <a href="#" class="btn btn-primary">Просмотреть</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
