@@ -50,6 +50,9 @@ class Video(models.Model):
     playlist = models.ForeignKey(
         verbose_name="Плейлист", to="Playlist", on_delete=models.SET_NULL, null=True, blank=True
     )
+    viewed = models.ManyToManyField(
+        verbose_name="Просмотрено", to="personal_area.Profile", blank=True, through="VideoView"
+    )
 
     class Meta:
         verbose_name = "Видео"
@@ -60,3 +63,9 @@ class Video(models.Model):
 
     def duration_display(self):
         return str(timedelta(seconds=self.duration))
+
+
+class VideoView(models.Model):
+    profile = models.ForeignKey(verbose_name="Пользователь", to="personal_area.Profile", on_delete=models.CASCADE)
+    video = models.ForeignKey(verbose_name="Пользователь", to="Video", on_delete=models.CASCADE)
+    date = models.DateTimeField(verbose_name="Время просмотра", auto_now=True)

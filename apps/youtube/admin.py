@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Channel, Playlist, Video
+from .models import Channel, Playlist, Video, VideoView
 from .utils.parse_playlists import parse_playlists
 from .utils.parse_videos import parse_videos
 
@@ -30,3 +30,8 @@ class PlaylistAdmin(admin.ModelAdmin):
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
     list_display = ["title", "url", "publish_date"]
+
+
+@admin.register(VideoView)
+class VideoViewAdmin(admin.ModelAdmin):
+    list_display = ["profile", "video", "date"]
