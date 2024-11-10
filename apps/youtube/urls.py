@@ -5,7 +5,7 @@ urlpatterns = [
     path(
         route="channels/",
         view=ChannelsListView.as_view(),
-        name='channels_list'
+        name='channels-list'
     ),
     path(
         route="videos/<str:pk>/",
