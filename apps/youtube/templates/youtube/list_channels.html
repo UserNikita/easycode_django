@@ -27,12 +27,14 @@
                     <td>{{ channel.video_set.count }}</td>
                     <td>{{ channel.video_duration_sum }}</td>
                     <td>
-                        <a  class="btn btn-primary" href="{{ channel.get_absolute_url }}">Подробнее</a>
+                        <a class="btn btn-primary" href="{{ channel.get_absolute_url }}">Подробнее</a>
                     </td>
                 </tr>
             {% endfor %}
-
             </tbody>
         </table>
+        <div class="float-end">
+            <a href="{% url 'youtube:channel-add' %}" class="btn btn-primary">Добавить</a>
+        </div>
     </div>
 {% endblock %}

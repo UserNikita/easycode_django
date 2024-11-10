@@ -11,5 +11,10 @@ urlpatterns = [
         route="videos/<str:pk>/",
         view=VideosListView.as_view(),
         name='videos-list'
-    )
+    ),
+    path(
+        route="channels/add/",
+        view=AddChannelFormView.as_view(),
+        name='channel-add'
+    ),
 ]

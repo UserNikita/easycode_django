@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, FormView,TemplateView
 from apps.youtube.models import Channel, Video
 
 
@@ -21,3 +21,7 @@ class VideosListView(ListView):
         context = super().get_context_data(object_list=object_list, **kwargs)
         context["channel"] = Channel.objects.get(pk=self.kwargs["pk"])
         return context
+
+
+class AddChannelFormView(TemplateView):
+    template_name = "youtube/add_channel.html"
