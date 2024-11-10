@@ -10,7 +10,12 @@ class ChannelsListView(ListView):
 class VideosListView(ListView):
     template_name = "youtube/list_videos.html"
     context_object_name = "video_list"
-    queryset = Video.objects.all()
+    model = Video
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(channel__pk=self.kwargs["pk"])
+        return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
