@@ -1,0 +1,58 @@
+from datetime import timedelta
+
+from django.urls import reverse
+from django.db import models
+
+
+class Channel(models.Model):
+    id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
+    url = models.URLField(verbose_name="Url", unique=True)
+    title = models.CharField(verbose_name="Название", max_length=255)
+
+    class Meta:
+        verbose_name = "Канал"
+        verbose_name_plural = "Каналы"
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse("youtube:videos-list", kwargs={"pk": self.pk})
+
+
+class Playlist(models.Model):
+    id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
+    url = models.URLField(verbose_name="Url", unique=True)
+    title = models.CharField(verbose_name="Название", max_length=255)
+    channel = models.ForeignKey(verbose_name="Канал", to="Channel", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "Плейлист"
+        verbose_name_plural = "Плейлисты"
+
+    def __str__(self):
+        return self.title
+
+
+class Video(models.Model):
+    id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
+    url = models.URLField(verbose_name="Url", unique=True)
+    title = models.CharField(verbose_name="Название", max_length=255)
+    description = models.TextField(verbose_name="Описание", blank=True)
+    duration = models.PositiveIntegerField(verbose_name="Продолжительность", default=0, help_text="В секундах")
+    thumbnail_url = models.URLField(verbose_name="Ссылка на превью", blank=True)
+    publish_date = models.DateTimeField(verbose_name="Дата публикации")
+    channel = models.ForeignKey(verbose_name="Канал", to="Channel", on_delete=models.CASCADE)
+    playlist = models.ForeignKey(
+        verbose_name="Плейлист", to="Playlist", on_delete=models.SET_NULL, null=True, blank=True
+    )
+
+    class Meta:
+        verbose_name = "Видео"
+        verbose_name_plural = "Видео"
+
+    def __str__(self):
+        return self.title
+
+    def duration_display(self):
+        return str(timedelta(seconds=self.duration))

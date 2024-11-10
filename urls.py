@@ -7,6 +7,7 @@ from django.contrib import admin
 urlpatterns = [
     re_path(r'^', include(('apps.blog.urls', 'blog'), namespace='blog')),
     re_path(r'^', include(('apps.personal_area.urls', 'personal_area'), namespace='personal_area')),
+    path("youtube/", include(('apps.youtube.urls', 'youtube'), namespace='youtube')),
     re_path(r'^library/', include(('apps.library.urls', 'library'), namespace='library')),
     re_path(r'^summernote/', include('django_summernote.urls')),
     re_path(r'^admin/', admin.site.urls),
