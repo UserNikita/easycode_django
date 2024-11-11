@@ -1,0 +1,7 @@
+<div class="list-group">
+    {% for playlist in playlists %}
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+            {{ playlist.title }} <span class="badge rounded-pill text-bg-info">4</span>
+        </a>
+    {% endfor %}
+</div>
