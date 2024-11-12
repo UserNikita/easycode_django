@@ -15,7 +15,7 @@ class VideosListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(channel__pk=self.kwargs["pk"])
+        qs = qs.filter(channel__pk=self.kwargs["pk"]).select_related("playlist")
         return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
