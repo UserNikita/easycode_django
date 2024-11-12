@@ -1,5 +1,6 @@
 from django.views.generic import ListView, CreateView
-from apps.youtube.models import Channel, Video
+from django.db.models import Prefetch, Exists, OuterRef
+from apps.youtube.models import Channel, Video, VideoView
 from apps.youtube.forms import ChannelForm
 
 
@@ -16,6 +17,14 @@ class VideosListView(ListView):
     def get_queryset(self):
         qs = super().get_queryset()
         qs = qs.filter(channel__pk=self.kwargs["pk"]).select_related("playlist")
+        # Добавить оптимизацию для поля viewed и оставить в нём только просмотры текущего пользователя
+        qs = qs.prefetch_related(
+            Prefetch("viewed", queryset=VideoView.objects.filter(profile=self.request.user.profile))
+        )
+        # Пометить просмотренные данным пользователем видео. Поле is_viewed будет принимать значения True или False
+        # qs = qs.annotate(is_viewed=Exists(
+        #     VideoView.objects.filter(profile=self.request.user.profile).filter(video=OuterRef("pk")))
+        # )
         return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
