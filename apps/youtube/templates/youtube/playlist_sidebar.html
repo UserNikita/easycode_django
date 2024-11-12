@@ -1,4 +1,30 @@
+<div class="list-group mb-2">
+    <a href="{% url 'youtube:videos-list' channel.pk %}" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex">
+            <div class="flex-grow-1">
+                Все видео
+            </div>
+            <div>
+                <span class="badge rounded-pill text-bg-info">
+                    {{ all_videos_count }}
+                </span>
+            </div>
+        </div>
+    </a>
+</div>
 <div class="list-group">
+    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex">
+            <div class="flex-grow-1">
+                Без плейлиста
+            </div>
+            <div>
+                <span class="badge rounded-pill text-bg-info">
+                    {{ without_playlist_videos_count }}
+                </span>
+            </div>
+        </div>
+    </a>
     {% for playlist in playlists %}
         <a href="#" class="list-group-item list-group-item-action" aria-current="true">
             <div class="d-flex">
