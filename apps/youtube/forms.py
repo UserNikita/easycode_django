@@ -17,3 +17,6 @@ class ChannelForm(forms.ModelForm):
     class Meta:
         model = Channel
         fields = ["url"]
+        widgets = {
+            'url': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
+        }

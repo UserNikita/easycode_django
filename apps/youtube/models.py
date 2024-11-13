@@ -6,7 +6,7 @@ from django.db import models
 
 class Channel(models.Model):
     id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
-    url = models.URLField(verbose_name="Url", unique=True)
+    url = models.URLField(verbose_name="Url", unique=True, help_text="URL адрес главной страницы канала")
     title = models.CharField(verbose_name="Название", max_length=255)
     thumbnail_url = models.URLField(verbose_name="Ссылка на превью", blank=True)
 
