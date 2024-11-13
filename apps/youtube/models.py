@@ -64,6 +64,9 @@ class Video(models.Model):
     def duration_display(self):
         return str(timedelta(seconds=self.duration))
 
+    def toggle_viewed_url(self):
+        return reverse("youtube:video-toggle-viewed-status", kwargs={"pk": self.pk})
+
 
 class VideoView(models.Model):
     profile = models.ForeignKey(verbose_name="Пользователь", to="personal_area.Profile", on_delete=models.CASCADE)

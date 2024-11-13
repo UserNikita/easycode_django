@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView
 from django.db.models import Prefetch, Exists, OuterRef, Sum
 from apps.youtube.models import Channel, Video, VideoView
 from apps.youtube.forms import ChannelForm
@@ -51,3 +51,19 @@ class VideosListView(ListView):
 class AddChannelFormView(CreateView):
     template_name = "youtube/add_channel.html"
     form_class = ChannelForm
+
+
+class ToggleViewedUpdateView(UpdateView):
+    model = Video
+    fields = []
+
+    def get_success_url(self):
+        return self.object.channel.get_absolute_url()
+
+    def get_object(self, queryset=None):
+        video = super().get_object()
+        if video_view := VideoView.objects.filter(video=video, profile=self.request.user.profile).first():
+            video_view.delete()
+        else:
+            VideoView.objects.create(profile=self.request.user.profile, video=video)
+        return video

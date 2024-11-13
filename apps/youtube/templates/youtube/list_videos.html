@@ -1,6 +1,12 @@
 {% extends 'youtube/base.html' %}
 {% load youtube_template_tags %}
 
+{% block css %}
+    .viewed-video {
+        background-color: #bebebe;
+    }
+{% endblock %}
+
 {% block content %}
     <div class="container-fluid">
         <nav aria-label="breadcrumb">
@@ -42,7 +48,7 @@
             <div class="row">
                 {% for video in video_list %}
                     <div class="col-12">
-                        <div class="card mb-1" {% if video.viewed.count %}style="background-color: #bebebe"{% endif %}>
+                        <div class="card mb-1 {% if video.viewed.count %}viewed-video{% endif %}" id="{{ video.id }}">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-auto">
@@ -51,7 +57,7 @@
                                     <div class="col">
                                         <div class="d-flex">
                                             <div class="flex-grow-1">
-                                                <h5 class="{% if video.viewed.count %}text-decoration-line-through{% endif %}">
+                                                <h5>
                                                     {{ video.title }}
                                                 </h5>
                                             </div>
@@ -65,8 +71,13 @@
                                                     Меню
                                                 </a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Открыть в ютубе</a></li>
-                                                    <li><a class="dropdown-item" href="#">Пометить просмотренным</a>
+                                                    <li><a class="dropdown-item" href="#">Открыть в ютубе</a>
+                                                    <li>
+                                                        <button class="dropdown-item"
+                                                                onclick="handleToggleVideoViewed('{{ video.toggle_viewed_url }}', '{{ video.id }}')"
+                                                        >
+                                                            Пометить просмотренным
+                                                        </button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -111,5 +122,14 @@
             </div>
         </div>
     </div>
+    <script>
+        const csrf_token = "{{ csrf_token }}"
+        const formData = new FormData()
+        formData.append("csrfmiddlewaretoken", csrf_token)
 
+        function handleToggleVideoViewed(toggleViewedUrl, videoId) {
+            fetch(toggleViewedUrl, {method: "POST", credentials: "same-origin", body: formData})
+            document.getElementById(videoId).classList.toggle("viewed-video")
+        }
+    </script>
 {% endblock %}

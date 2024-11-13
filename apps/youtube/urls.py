@@ -17,4 +17,9 @@ urlpatterns = [
         view=AddChannelFormView.as_view(),
         name='channel-add'
     ),
+    path(
+        route="videos/<str:pk>/toggle-viewed-status/",
+        view=ToggleViewedUpdateView.as_view(),
+        name='video-toggle-viewed-status'
+    ),
 ]
