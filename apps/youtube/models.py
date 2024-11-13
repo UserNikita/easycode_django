@@ -21,8 +21,7 @@ class Channel(models.Model):
         return reverse("youtube:videos-list", kwargs={"pk": self.pk})
 
     def video_duration_sum(self):
-        duration = self.video_set.all().aggregate(total_duration=models.Sum("duration"))["total_duration"]
-        return str(timedelta(seconds=duration)) if duration else "Нет видео"
+        return self.video_set.all().aggregate(total_duration=models.Sum("duration"))["total_duration"]
 
 
 class Playlist(models.Model):

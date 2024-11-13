@@ -1,5 +1,7 @@
+from datetime import timedelta
+
 from django.views.generic import ListView, CreateView
-from django.db.models import Prefetch, Exists, OuterRef
+from django.db.models import Prefetch, Exists, OuterRef, Sum
 from apps.youtube.models import Channel, Video, VideoView
 from apps.youtube.forms import ChannelForm
 
@@ -29,7 +31,20 @@ class VideosListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        context["channel"] = Channel.objects.get(pk=self.kwargs["pk"])
+        channel = Channel.objects.get(pk=self.kwargs["pk"])
+        context["channel"] = channel
+
+        qs = context["object_list"]
+        all_duration = channel.video_duration_sum()
+        viewed = qs.exclude(viewed=None).aggregate(duration=Sum("duration"))["duration"]
+        not_viewed = qs.filter(viewed=None).aggregate(duration=Sum("duration"))["duration"]
+
+        context["duration"] = {
+            "all": str(timedelta(seconds=all_duration)) if all_duration else "Нет видео",
+            "viewed": str(timedelta(seconds=viewed)) if viewed else "Нет видео",
+            "not_viewed": str(timedelta(seconds=not_viewed)) if not_viewed else "Нет видео",
+            "progress": 100 / all_duration * viewed  # Процент просмотренного
+        }
         return context
 
 
