@@ -2,9 +2,7 @@
 {% load youtube_template_tags %}
 
 {% block css %}
-    .viewed-video {
-        background-color: #bebebe;
-    }
+    .viewed-video {background-color: #bebebe;}
 {% endblock %}
 
 {% block content %}
@@ -13,27 +11,34 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url "youtube:channels-list" %}">Каналы</a></li>
                 <li class="breadcrumb-item">{{ channel.title }}</li>
-                <li class="breadcrumb-item active" aria-current="page">Видео</li>
+                <li class="breadcrumb-item active" aria-current="page">Все видео</li>
             </ol>
         </nav>
     </div>
     <div class="row">
         <div class="col-md-4 col-sm-12">
-            {% include_playlists %}
-        </div>
-        <div class="col-md-8 col-sm-12">
-            <div>
+            <div class="card card-body mb-2">
+                <table class="table table-sm">
+                    <tbody>
+                    <tr>
+                        <td>Длительность всех видео</td>
+                        <td class="text-end">{{ duration.all }}</td>
+                    </tr>
+                    <tr>
+                        <td>Просмотрено</td>
+                        <td class="text-end">{{ duration.viewed }}</td>
+                    </tr>
+                    <tr>
+                        <td>Осталось просмотреть</td>
+                        <td class="text-end">{{ duration.not_viewed }}</td>
+                    </tr>
+                    <tr>
+                        <td>Прогресс просмотра</td>
+                        <td class="text-end">{{ duration.progress|stringformat:".1f" }}%</td>
+                    </tr>
+                    </tbody>
+                </table>
                 <div>
-                    Длительность всех видео: {{ duration.all }}
-                </div>
-                <div>
-                    Просмотрено: {{ duration.viewed }}
-                </div>
-                <div>
-                    Осталось просмотреть: {{ duration.not_viewed }}
-                </div>
-                <div>
-                    Прогресс просмотра: {{ duration.progress|stringformat:".1f" }}%
                     <div class="progress"
                          role="progressbar"
                          aria-label="Progress"
@@ -45,6 +50,9 @@
                     </div>
                 </div>
             </div>
+            {% include_playlists %}
+        </div>
+        <div class="col-md-8 col-sm-12">
             <div class="row">
                 {% for video in video_list %}
                     <div class="col-12">
