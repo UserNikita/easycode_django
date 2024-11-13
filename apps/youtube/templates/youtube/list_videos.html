@@ -54,6 +54,11 @@
         </div>
         <div class="col-md-8 col-sm-12">
             <div class="row">
+                {% if not video_list %}
+                    <div class="text-center">
+                        Нет видео
+                    </div>
+                {% endif %}
                 {% for video in video_list %}
                     <div class="col-12">
                         <div class="card mb-1 {% if video.viewed.count %}viewed-video{% endif %}" id="{{ video.id }}">

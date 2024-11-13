@@ -43,7 +43,7 @@ class VideosListView(ListView):
             "all": str(timedelta(seconds=all_duration)) if all_duration else "Нет видео",
             "viewed": str(timedelta(seconds=viewed)) if viewed else "Нет видео",
             "not_viewed": str(timedelta(seconds=not_viewed)) if not_viewed else "Нет видео",
-            "progress": 100 / all_duration * viewed  # Процент просмотренного
+            "progress": 100 / all_duration * (viewed or 0) if all_duration else 0  # Процент просмотренного
         }
         return context
 
