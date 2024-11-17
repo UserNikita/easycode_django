@@ -129,9 +129,12 @@
                                             </small>
                                         </div>
                                         {% if video.playlist %}
-                                            <div>
-                                                <small class="text-body-secondary">
-                                                    Плейлист: {{ video.playlist }}
+                                            <div class="text-body-secondary">
+                                                <small>
+                                                    Плейлист:
+                                                    <a class="link-secondary" href="{{ video.playlist.get_absolute_url }}">
+                                                        {{ video.playlist }}
+                                                    </a>
                                                 </small>
                                             </div>
                                         {% endif %}
