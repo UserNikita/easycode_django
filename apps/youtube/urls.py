@@ -8,7 +8,7 @@ urlpatterns = [
         name='channels-list'
     ),
     path(
-        route="videos/<str:pk>/",
+        route="channels/<str:pk>/videos/",
         view=VideosListView.as_view(),
         name='videos-list'
     ),
@@ -23,7 +23,7 @@ urlpatterns = [
         name='video-toggle-viewed-status'
     ),
     path(
-        route="<str:pk>/update-data/",
+        route="channels/<str:pk>/update-data/",
         view=UpdateChannelDataUpdateView.as_view(),
         name='update-channel-data'
     )
