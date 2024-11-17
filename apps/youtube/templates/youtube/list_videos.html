@@ -97,12 +97,16 @@
                                                     Меню
                                                 </a>
                                                 <ul class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">Открыть в ютубе</a>
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ video.url }}" target="_blank">
+                                                            Открыть в YouTube
+                                                        </a>
+                                                    </li>
                                                     <li>
                                                         <button class="dropdown-item"
                                                                 onclick="handleToggleVideoViewed('{{ video.toggle_viewed_url }}', '{{ video.id }}')"
                                                         >
-                                                            Пометить просмотренным
+                                                            Пометить просмотренным / не просмотренным
                                                         </button>
                                                     </li>
                                                 </ul>
