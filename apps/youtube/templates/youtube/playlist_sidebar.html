@@ -1,6 +1,6 @@
 <div class="list-group mb-2">
     <a href="{% url 'youtube:videos-list' channel.pk %}"
-       class="list-group-item list-group-item-action {% if not current_playlist %}active{% endif %}"
+       class="list-group-item list-group-item-action {% if not current_playlist and not without_playlist %}active{% endif %}"
     >
         <div class="d-flex">
             <div class="flex-grow-1">
@@ -15,7 +15,9 @@
     </a>
 </div>
 <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action">
+    <a href="{% url 'youtube:without-playlist-videos-list' channel.pk %}"
+       class="list-group-item list-group-item-action {% if without_playlist %}active{% endif %}"
+    >
         <div class="d-flex">
             <div class="flex-grow-1">
                 Без плейлиста

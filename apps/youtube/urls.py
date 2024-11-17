@@ -18,6 +18,11 @@ urlpatterns = [
         name='playlist-videos-list'
     ),
     path(
+        route="channels/<str:channel_pk>/videos-without-playlist/",
+        view=WithoutPlaylistVideosListView.as_view(),
+        name='without-playlist-videos-list'
+    ),
+    path(
         route="channels/add/",
         view=AddChannelFormView.as_view(),
         name='channel-add'

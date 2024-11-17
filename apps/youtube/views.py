@@ -60,6 +60,16 @@ class PlaylistVideosListView(VideosListView):
     pass
 
 
+class WithoutPlaylistVideosListView(VideosListView):
+    def get_queryset(self):
+        return super().get_queryset().filter(playlist=None)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        context["without_playlist"] = True
+        return context
+
+
 class AddChannelFormView(CreateView):
     template_name = "youtube/add_channel.html"
     form_class = ChannelForm
