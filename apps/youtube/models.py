@@ -77,3 +77,7 @@ class VideoView(models.Model):
     profile = models.ForeignKey(verbose_name="Пользователь", to="personal_area.Profile", on_delete=models.CASCADE)
     video = models.ForeignKey(verbose_name="Пользователь", to="Video", on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Время просмотра", auto_now=True)
+
+    class Meta:
+        verbose_name = "Просмотр видео"
+        verbose_name_plural = "Просмотры видео"

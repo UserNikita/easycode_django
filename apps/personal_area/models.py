@@ -7,6 +7,9 @@ class Profile(models.Model):
     user = models.OneToOneField(verbose_name='Пользователь', to='auth.User', on_delete=models.CASCADE)
     photo = models.ImageField(verbose_name='Фото', blank=True)
 
+    def __str__(self):
+        return f"Профиль: {self.user}"
+
     def get_photo_url(self):
         if self.photo and self.photo.url:
             return self.photo.url
