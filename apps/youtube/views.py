@@ -2,6 +2,7 @@ from datetime import timedelta
 
 from django.utils.timezone import now
 from django.views.generic import ListView, CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Prefetch, Exists, OuterRef, Sum
 
 from apps.youtube.models import Channel, Video, VideoView, Playlist
@@ -9,12 +10,12 @@ from apps.youtube.forms import ChannelForm
 from apps.youtube.utils.update_channel_data import update_channel
 
 
-class ChannelsListView(ListView):
+class ChannelsListView(LoginRequiredMixin, ListView):
     template_name = "youtube/list_channels.html"
     queryset = Channel.objects.all()
 
 
-class VideosListView(ListView):
+class VideosListView(LoginRequiredMixin, ListView):
     template_name = "youtube/list_videos.html"
     context_object_name = "video_list"
     model = Video
@@ -70,12 +71,7 @@ class WithoutPlaylistVideosListView(VideosListView):
         return context
 
 
-class AddChannelFormView(CreateView):
-    template_name = "youtube/add_channel.html"
-    form_class = ChannelForm
-
-
-class ToggleViewedUpdateView(UpdateView):
+class ToggleViewedUpdateView(LoginRequiredMixin, UpdateView):
     model = Video
     fields = []
 
@@ -91,9 +87,20 @@ class ToggleViewedUpdateView(UpdateView):
         return video
 
 
-class UpdateChannelDataUpdateView(UpdateView):
+class AddChannelFormView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+    template_name = "youtube/add_channel.html"
+    form_class = ChannelForm
+
+    def test_func(self):
+        return self.request.user.is_staff
+
+
+class UpdateChannelDataUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Channel
     fields = []
+
+    def test_func(self):
+        return self.request.user.is_staff
 
     def get_object(self, queryset=None):
         channel = super().get_object(queryset=queryset)
