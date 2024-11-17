@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django import template
 from django.db.models import Count
 
@@ -13,3 +15,8 @@ def include_playlists(context):
         'all_videos_count': channel.video_set.count(),
     })
     return context
+
+
+@register.filter()
+def duration(value: int):
+    return str(timedelta(seconds=value))
