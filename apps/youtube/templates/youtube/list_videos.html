@@ -11,7 +11,11 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{% url "youtube:channels-list" %}">Каналы</a></li>
                 <li class="breadcrumb-item">{{ channel.title }}</li>
-                <li class="breadcrumb-item active" aria-current="page">Все видео</li>
+                {% if current_playlist %}
+                    <li class="breadcrumb-item active" aria-current="page">{{ current_playlist.title }}</li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">Все видео</li>
+                {% endif %}
             </ol>
         </nav>
     </div>

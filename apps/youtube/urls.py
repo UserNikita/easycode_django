@@ -8,9 +8,14 @@ urlpatterns = [
         name='channels-list'
     ),
     path(
-        route="channels/<str:pk>/videos/",
+        route="channels/<str:channel_pk>/videos/",
         view=VideosListView.as_view(),
         name='videos-list'
+    ),
+    path(
+        route="channels/<str:channel_pk>/playlists/<str:playlist_pk>/videos/",
+        view=PlaylistVideosListView.as_view(),
+        name='playlist-videos-list'
     ),
     path(
         route="channels/add/",

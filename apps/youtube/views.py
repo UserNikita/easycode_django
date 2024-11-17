@@ -4,7 +4,7 @@ from django.utils.timezone import now
 from django.views.generic import ListView, CreateView, UpdateView
 from django.db.models import Prefetch, Exists, OuterRef, Sum
 
-from apps.youtube.models import Channel, Video, VideoView
+from apps.youtube.models import Channel, Video, VideoView, Playlist
 from apps.youtube.forms import ChannelForm
 from apps.youtube.utils.update_channel_data import update_channel
 
@@ -21,7 +21,10 @@ class VideosListView(ListView):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        qs = qs.filter(channel__pk=self.kwargs["pk"]).select_related("playlist")
+        qs = qs.filter(channel__pk=self.kwargs["channel_pk"])
+        if "playlist_pk" in self.kwargs:
+            qs = qs.filter(playlist__pk=self.kwargs["playlist_pk"])
+        qs = qs.select_related("playlist")
         # Добавить оптимизацию для поля viewed и оставить в нём только просмотры текущего пользователя
         qs = qs.prefetch_related(
             Prefetch("viewed", queryset=VideoView.objects.filter(profile=self.request.user.profile))
@@ -34,8 +37,10 @@ class VideosListView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(object_list=object_list, **kwargs)
-        channel = Channel.objects.get(pk=self.kwargs["pk"])
+        channel = Channel.objects.get(pk=self.kwargs["channel_pk"])
         context["channel"] = channel
+        if self.kwargs.get("playlist_pk"):
+            context["current_playlist"] = Playlist.objects.get(pk=self.kwargs["playlist_pk"])
 
         qs = context["object_list"]
         all_duration = channel.video_duration_sum()
@@ -49,6 +54,10 @@ class VideosListView(ListView):
             "progress": 100 / all_duration * (viewed or 0) if all_duration else 0  # Процент просмотренного
         }
         return context
+
+
+class PlaylistVideosListView(VideosListView):
+    pass
 
 
 class AddChannelFormView(CreateView):

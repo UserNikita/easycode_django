@@ -19,7 +19,7 @@ class Channel(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("youtube:videos-list", kwargs={"pk": self.pk})
+        return reverse("youtube:videos-list", kwargs={"channel_pk": self.pk})
 
     def video_duration_sum(self):
         return self.video_set.all().aggregate(total_duration=models.Sum("duration"))["total_duration"]
@@ -37,6 +37,9 @@ class Playlist(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("youtube:playlist-videos-list", kwargs={"channel_pk": self.channel_id, "playlist_pk": self.pk})
 
 
 class Video(models.Model):
