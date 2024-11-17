@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django import template
-from django.db.models import Count
+from django.db.models import Count, Q
 
 register = template.Library()
 
@@ -10,7 +10,11 @@ register = template.Library()
 def include_playlists(context):
     channel = context["channel"]
     context.update({
-        'playlists': channel.playlist_set.all().annotate(videos_count=Count("video")),
+        'playlists': (
+            channel.playlist_set.all()
+            .annotate(videos_count=Count("video"))
+            .annotate(viewed_videos_count=Count("video", filter=Q(video__viewed__user=context["user"])))
+        ),
         'without_playlist_videos_count': channel.video_set.filter(playlist=None).count(),
         'all_videos_count': channel.video_set.count(),
     })

@@ -41,6 +41,15 @@
                     {{ playlist.title }}
                 </div>
                 <div>
+                    {% if playlist.viewed_videos_count == playlist.videos_count %}
+                        <span class="badge rounded-pill text-bg-success">
+                            {{ playlist.viewed_videos_count }}
+                        </span>
+                    {% elif playlist.viewed_videos_count > 0 %}
+                        <span class="badge rounded-pill text-bg-secondary">
+                            {{ playlist.viewed_videos_count }}
+                        </span>
+                    {% endif %}
                     <span class="badge rounded-pill text-bg-info">
                         {{ playlist.videos_count }}
                     </span>
