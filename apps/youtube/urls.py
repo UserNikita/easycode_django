@@ -22,4 +22,9 @@ urlpatterns = [
         view=ToggleViewedUpdateView.as_view(),
         name='video-toggle-viewed-status'
     ),
+    path(
+        route="<str:pk>/update-data/",
+        view=UpdateChannelDataUpdateView.as_view(),
+        name='update-channel-data'
+    )
 ]

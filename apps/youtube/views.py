@@ -1,9 +1,12 @@
 from datetime import timedelta
 
+from django.utils.timezone import now
 from django.views.generic import ListView, CreateView, UpdateView
 from django.db.models import Prefetch, Exists, OuterRef, Sum
+
 from apps.youtube.models import Channel, Video, VideoView
 from apps.youtube.forms import ChannelForm
+from apps.youtube.utils.update_channel_data import update_channel
 
 
 class ChannelsListView(ListView):
@@ -67,3 +70,15 @@ class ToggleViewedUpdateView(UpdateView):
         else:
             VideoView.objects.create(profile=self.request.user.profile, video=video)
         return video
+
+
+class UpdateChannelDataUpdateView(UpdateView):
+    model = Channel
+    fields = []
+
+    def get_object(self, queryset=None):
+        channel = super().get_object(queryset=queryset)
+        update_channel(channel=channel)
+        channel.last_update = now()
+        channel.save()
+        return channel

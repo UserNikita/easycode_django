@@ -18,6 +18,19 @@
     <div class="row">
         <div class="col-md-4 col-sm-12">
             <div class="card card-body mb-2">
+                <div class="d-flex mb-2">
+                    <div class="flex-grow-1">
+                        <form action="{% url 'youtube:update-channel-data' channel.pk %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Обновить данные
+                            </button>
+                        </form>
+                    </div>
+                    <div class="text-secondary">
+                        Дата последнего обновления: {{ channel.last_update|default_if_none:"-" }}
+                    </div>
+                </div>
                 <table class="table table-sm">
                     <tbody>
                     <tr>

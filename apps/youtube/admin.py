@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Channel, Playlist, Video, VideoView
-from .utils.parse_playlists import parse_playlists
-from .utils.parse_videos import parse_videos, parse_videos_in_playlist
+from .utils.update_channel_data import update_playlists
+from .utils.update_channel_data import update_videos, update_videos_in_playlist
 
 
 @admin.register(Channel)
@@ -11,13 +11,13 @@ class ChannelAdmin(admin.ModelAdmin):
 
     def parse_playlists(self, request, queryset):
         for channel in queryset:
-            parse_playlists(channel=channel)
+            update_playlists(channel=channel)
 
     parse_playlists.short_description = "Получить плейлисты"
 
     def parse_videos(self, request, queryset):
         for channel in queryset:
-            parse_videos(channel=channel)
+            update_videos(channel=channel)
 
     parse_videos.short_description = "Получить видеоролики"
 
@@ -29,7 +29,7 @@ class PlaylistAdmin(admin.ModelAdmin):
 
     def parse_videos(self, request, queryset):
         for playlist in queryset:
-            parse_videos_in_playlist(playlist=playlist)
+            update_videos_in_playlist(playlist=playlist)
 
     parse_videos.short_description = "Получить видеоролики"
 

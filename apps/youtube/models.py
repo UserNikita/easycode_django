@@ -9,6 +9,7 @@ class Channel(models.Model):
     url = models.URLField(verbose_name="Url", unique=True, help_text="URL адрес главной страницы канала")
     title = models.CharField(verbose_name="Название", max_length=255)
     thumbnail_url = models.URLField(verbose_name="Ссылка на превью", blank=True)
+    last_update = models.DateTimeField(verbose_name="Дата последнего обновления", null=True)
 
     class Meta:
         verbose_name = "Канал"
