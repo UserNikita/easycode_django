@@ -13,6 +13,8 @@
                 <li class="breadcrumb-item">{{ channel.title }}</li>
                 {% if current_playlist %}
                     <li class="breadcrumb-item active" aria-current="page">{{ current_playlist.title }}</li>
+                {% elif without_playlist %}
+                    <li class="breadcrumb-item active" aria-current="page">Видео без плейлиста</li>
                 {% else %}
                     <li class="breadcrumb-item active" aria-current="page">Все видео</li>
                 {% endif %}
