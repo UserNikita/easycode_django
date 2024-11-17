@@ -43,14 +43,14 @@ class VideosListView(ListView):
             context["current_playlist"] = Playlist.objects.get(pk=self.kwargs["playlist_pk"])
 
         qs = context["object_list"]
-        all_duration = channel.video_duration_sum()
+        all_duration = qs.aggregate(duration=Sum("duration"))["duration"]
         viewed = qs.exclude(viewed=None).aggregate(duration=Sum("duration"))["duration"]
         not_viewed = qs.filter(viewed=None).aggregate(duration=Sum("duration"))["duration"]
 
         context["duration"] = {
             "all": str(timedelta(seconds=all_duration)) if all_duration else "Нет видео",
-            "viewed": str(timedelta(seconds=viewed)) if viewed else "Нет видео",
-            "not_viewed": str(timedelta(seconds=not_viewed)) if not_viewed else "Нет видео",
+            "viewed": str(timedelta(seconds=viewed)) if viewed else "Нет просмотренных видео",
+            "not_viewed": str(timedelta(seconds=not_viewed)) if not_viewed else "Нет непросмотренных видео",
             "progress": 100 / all_duration * (viewed or 0) if all_duration else 0  # Процент просмотренного
         }
         return context
