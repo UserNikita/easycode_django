@@ -2,7 +2,17 @@
 {% load youtube_template_tags %}
 
 {% block css %}
-    .viewed-video {background-color: #bebebe;}
+    :root {
+        --viewed-video-bg-color: #bebebe;
+    }
+
+    [data-bs-theme="dark"] {
+        --viewed-video-bg-color: #444;
+    }
+
+    .viewed-video {
+        background-color: var(--viewed-video-bg-color);
+    }
 {% endblock %}
 
 {% block content %}
