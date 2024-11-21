@@ -3,7 +3,7 @@ from datetime import timedelta
 from django.utils.timezone import now
 from django.views.generic import ListView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.db.models import Prefetch, Exists, OuterRef, Sum
+from django.db.models import Prefetch, Exists, OuterRef, Sum, Count
 
 from apps.youtube.models import Channel, Video, VideoView, Playlist
 from apps.youtube.forms import ChannelForm
@@ -13,6 +13,10 @@ from apps.youtube.utils.update_channel_data import update_channel
 class ChannelsListView(LoginRequiredMixin, ListView):
     template_name = "youtube/list_channels.html"
     queryset = Channel.objects.all()
+
+    def get_queryset(self):
+        qs = super().get_queryset().prefetch_related("video_set")
+        return qs.annotate(videos_count=Count("video")).annotate(videos_duration_sum=Sum("video__duration"))
 
 
 class VideosListView(LoginRequiredMixin, ListView):
