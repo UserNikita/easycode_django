@@ -29,6 +29,7 @@ class Playlist(models.Model):
     id = models.CharField(verbose_name="Id", max_length=255, primary_key=True)
     url = models.URLField(verbose_name="Url", unique=True)
     title = models.CharField(verbose_name="Название", max_length=255)
+    description = models.TextField(verbose_name="Описание", blank=True)
     channel = models.ForeignKey(verbose_name="Канал", to="Channel", on_delete=models.CASCADE)
 
     class Meta:

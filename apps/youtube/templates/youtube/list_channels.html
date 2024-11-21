@@ -33,7 +33,7 @@
                     <td>{{ channel.title }}</td>
                     <td><a href="{{ channel.url }}">Youtube</a></td>
                     <td>{{ channel.video_set.count }}</td>
-                    <td>{{ channel.video_duration_sum|duration }}</td>
+                    <td>{% if channel.video_duration_sum %}{{ channel.video_duration_sum|duration }}{% endif %}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ channel.get_absolute_url }}">Подробнее</a>
                     </td>

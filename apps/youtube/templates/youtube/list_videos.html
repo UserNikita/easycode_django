@@ -83,8 +83,18 @@
         </div>
         <div class="col-md-8 col-sm-12">
             <div class="row">
+                {% if current_playlist.description %}
+                    <div class="col-12">
+                        <div class="card mb-1">
+                            <div class="card-body">
+                                <h5>Описание</h5>
+                                {{ current_playlist.description }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
                 {% if not video_list %}
-                    <div class="text-center">
+                    <div class="col-12 text-center">
                         Нет видео
                     </div>
                 {% endif %}

@@ -23,6 +23,11 @@ def update_playlists(channel: models.Channel):
     c = Channel(channel.url)
 
     for p in c.playlists:
+        description = ""
+        try:
+            description = p.description
+        except KeyError:
+            pass
         if channel.playlist_set.filter(pk=p.playlist_id).exists():
             continue
         try:
@@ -30,6 +35,7 @@ def update_playlists(channel: models.Channel):
                 id=p.playlist_id,
                 url=p.playlist_url,
                 title=p.title,
+                description=description,
                 channel=channel,
             )
         except:
