@@ -10,7 +10,7 @@
         </nav>
 
         {% for channel in object_list %}
-            <div class="card mb-1">
+            <div class="card mb-2">
                 <div class="card-header">
                     <h5>{{ channel.title }}</h5>
                 </div>
@@ -43,7 +43,9 @@
             </div>
         {% endfor %}
         <div class="float-end">
-            <a href="{% url 'youtube:channel-add' %}" class="btn btn-primary">Добавить канал</a>
+            <a href="{% url 'youtube:channel-add' %}" class="btn btn-primary">
+                <i class="bi bi-plus"></i> Добавить канал
+            </a>
         </div>
     </div>
 {% endblock %}
