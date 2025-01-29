@@ -1,0 +1,44 @@
+{% extends 'films/base.html' %}
+{% load film_template_tags %}
+
+{% block content %}
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Название</th>
+                <th scope="col">Год релиза</th>
+                <th scope="col">Рейтинг</th>
+                <th scope="col">Дата просмотра</th>
+                <th scope="col">Кинопоиск</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for film in film_list %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>
+                        <a href="{{ film.get_absolute_url }}#">{{ film.title }}</a>
+                    </td>
+                    <td>{{ film.year|default_if_none:"" }}</td>
+                    <td>{% rating_widget %}</td>
+                    <td>{{ film.created }}</td>
+                    <td>
+                        {% if film.kinopoisk_url %}
+                            <a href="{{ film.kinopoisk_url }}" class="btn btn-success btn-sm" target="_blank">
+                                Открыть
+                            </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="float-end">
+            <a href="{% url 'films:film-add' %}" class="btn btn-primary">
+                <i class="bi bi-plus"></i> Добавить фильм
+            </a>
+        </div>
+    </div>
+{% endblock %}

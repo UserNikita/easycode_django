@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'apps.personal_area',
     'apps.library',
     'apps.youtube',
+    'apps.films',
 
     'django_summernote',
     'django_filters',

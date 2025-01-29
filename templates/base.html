@@ -63,6 +63,12 @@
             </li>
             {% if user.is_superuser %}
                 <li>
+                    <a href="{% url 'films:films-list' %}">
+                        <span class="uk-margin-small-right" uk-icon="folder"></span>
+                        Фильмы
+                    </a>
+                </li>
+                <li>
                     <a href="{% url 'youtube:channels-list' %}">
                         <span class="uk-margin-small-right" uk-icon="folder"></span>
                         YouTube каналы

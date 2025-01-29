@@ -1,0 +1,9 @@
+<div>
+    {% for star in stars %}
+        {% if star < film.rating %}
+            <i class="bi bi-star-fill text-info"></i>
+        {% else %}
+            <i class="bi bi-star"></i>
+        {% endif %}
+    {% endfor %}
+</div>
